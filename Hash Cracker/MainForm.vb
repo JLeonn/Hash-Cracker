@@ -9,36 +9,40 @@ Public Class MainForm
 
     Private attackMethod As String
     Private targetPath As String
-    Private storagePath As String
+    Private storagePath As String = defaultStoragePath
+    Private passwordListPath As String
     Private attackManager As AttackManager
     Private statThread As Thread
 
+    'Thread safe delegate sub used to update label text properties on different threads.
     Private Delegate Sub SetTextCallBack([text] As String, label As Label)
 
     Private elapsedTime As Integer
 
-    ' On load
-    Private Sub HashCracker_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        ' Pass
-    End Sub
-
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
-        openFileDialog.Title = "Target Selection"
-        openFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        openFileDialog.Filter = "Hash Formatted File (.hff)|*.hff"
-        openFileDialog.ShowDialog()
+        openTargetFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openTargetFileDialog.Filter = "Hash Formatted File (.hff)|*.hff"
+        openTargetFileDialog.ShowDialog()
 
-        targetLabel.Text = openFileDialog.FileName
-        targetPath = openFileDialog.FileName
+        If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hff" Then
+            targetLabel.Text = openTargetFileDialog.FileName
+            targetPath = openTargetFileDialog.FileName
+        Else
+            targetLabel.Text = "No Target Selected."
+        End If
     End Sub
 
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click
-        openFileDialog.Title = "Storage Selection"
-        openFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        openFileDialog.ShowDialog()
+        openStorageFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openStorageFileDialog.ShowDialog()
 
-        storageLabel.Text = openFileDialog.FileName
-        storagePath = openFileDialog.FileName
+        If File.Exists(openStorageFileDialog.FileName) Then
+            storageLabel.Text = openStorageFileDialog.FileName
+            storagePath = openStorageFileDialog.FileName
+        Else
+            storageLabel.Text = "No Storage Path Selected."
+            storagePath = defaultStoragePath
+        End If
     End Sub
 
     Private Sub bruteforceRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles bruteforceRadioButton.CheckedChanged
@@ -50,27 +54,21 @@ Public Class MainForm
     End Sub
 
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
-        openFileDialog.Title = "Password List Selection"
-        openFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        openFileDialog.ShowDialog()
+        openPasswordFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openPasswordFileDialog.ShowDialog()
 
-        passwordListLabel.Text = openFileDialog.FileName
+        If File.Exists(openPasswordFileDialog.FileName) Then
+            passwordListLabel.Text = openPasswordFileDialog.FileName
+            passwordListPath = openPasswordFileDialog.FileName
+        Else
+            storageLabel.Text = "No Password List Selected."
+        End If
     End Sub
 
     Private Sub startButton_Click(sender As Object, e As EventArgs) Handles startButton.Click
-
-        ' Checks given path information.
-        If Not File.Exists(targetPath) Then
-            MessageBox.Show("Invalid Target Path.")
+        If targetPath = Nothing Then
+            MessageBox.Show("No Target Selected.")
             Exit Sub
-        ElseIf Path.GetExtension(targetPath) <> ".hff" Then
-            MessageBox.Show("Target File Format Must Be '.hff'")
-            Exit Sub
-        End If
-        If Not File.Exists(storagePath) Then
-            storagePath = defaultStoragePath
-        Else
-            storagePath = storageLabel.Text
         End If
 
         attackManager = New AttackManager(targetPath, storagePath)
@@ -103,12 +101,12 @@ Public Class MainForm
                 totalPossibleLabel.Text = attacker.TotalCombinations
             Case "dictionary"
                 ' Checks information need to commence a dictinary attack
-                If Not File.Exists(passwordListLabel.Text) Then
-                    MessageBox.Show("Invalid Password List Path.")
+                If passwordListPath = Nothing Then
+                    MessageBox.Show("No Password List Selected.")
                     Exit Sub
                 End If
 
-                Dim attacker As New Dictionary(passwordListLabel.Text)
+                Dim attacker As New Dictionary(passwordListPath)
                 attackManager.Attacker = attacker
                 totalPossibleLabel.Text = String.Empty
                 totalPossibleLabel.Enabled = False

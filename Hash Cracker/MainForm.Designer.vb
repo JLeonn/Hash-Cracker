@@ -46,7 +46,7 @@ Partial Class MainForm
         Me.bruteforceRadioButton = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.targetLabel = New System.Windows.Forms.Label()
-        Me.openFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.openTargetFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.totalPossibleLabel = New System.Windows.Forms.Label()
@@ -69,6 +69,8 @@ Partial Class MainForm
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.stopButton = New System.Windows.Forms.Button()
         Me.Label19 = New System.Windows.Forms.Label()
+        Me.openStorageFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.openPasswordFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -337,13 +339,13 @@ Partial Class MainForm
         Me.targetLabel.Location = New System.Drawing.Point(107, 47)
         Me.targetLabel.Name = "targetLabel"
         Me.targetLabel.Padding = New System.Windows.Forms.Padding(5)
-        Me.targetLabel.Size = New System.Drawing.Size(115, 25)
+        Me.targetLabel.Size = New System.Drawing.Size(140, 25)
         Me.targetLabel.TabIndex = 5
-        Me.targetLabel.Text = "No Target Selected."
+        Me.targetLabel.Text = "No Target Path Selected."
         '
-        'openFileDialog
+        'openTargetFileDialog
         '
-        Me.openFileDialog.FileName = "OpenFileDialog1"
+        Me.openTargetFileDialog.Title = "Target Selection."
         '
         'Label10
         '
@@ -539,9 +541,9 @@ Partial Class MainForm
         Me.storageLabel.Location = New System.Drawing.Point(727, 47)
         Me.storageLabel.Name = "storageLabel"
         Me.storageLabel.Padding = New System.Windows.Forms.Padding(5)
-        Me.storageLabel.Size = New System.Drawing.Size(115, 25)
+        Me.storageLabel.Size = New System.Drawing.Size(146, 25)
         Me.storageLabel.TabIndex = 28
-        Me.storageLabel.Text = "No Target Selected."
+        Me.storageLabel.Text = "No Storage Path Selected."
         '
         'storageButton
         '
@@ -587,6 +589,14 @@ Partial Class MainForm
         Me.Label19.Padding = New System.Windows.Forms.Padding(5)
         Me.Label19.Size = New System.Drawing.Size(10, 26)
         Me.Label19.TabIndex = 31
+        '
+        'openStorageFileDialog
+        '
+        Me.openStorageFileDialog.Title = "Storage Selection."
+        '
+        'openPasswordFileDialog
+        '
+        Me.openPasswordFileDialog.Title = "Password List Selection"
         '
         'MainForm
         '
@@ -638,7 +648,7 @@ Partial Class MainForm
     Friend WithEvents passwordListButton As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents targetLabel As Label
-    Friend WithEvents openFileDialog As OpenFileDialog
+    Friend WithEvents openTargetFileDialog As OpenFileDialog
     Friend WithEvents passwordListLabel As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label10 As Label
@@ -663,4 +673,6 @@ Partial Class MainForm
     Friend WithEvents totalPossibleLabel As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents Label19 As Label
+    Friend WithEvents openStorageFileDialog As OpenFileDialog
+    Friend WithEvents openPasswordFileDialog As OpenFileDialog
 End Class
