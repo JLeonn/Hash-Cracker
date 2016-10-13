@@ -7,8 +7,12 @@ Module Parsing
         Private reader As StreamReader
 
         Public Sub New(ByVal filePath As String)
-            Me.FilePath = filePath
-            reader = New StreamReader(filePath)
+            If Path.GetExtension(filePath) = ".hff" Then
+                Me.FilePath = filePath
+                reader = New StreamReader(filePath)
+            Else
+                Throw New ArgumentOutOfRangeException("File Must Be .hff Format")
+            End If
         End Sub
 
         ' Generates a hash type that was read and parsed from the given file path.
@@ -37,7 +41,7 @@ Module Parsing
         End Function
 
         ' Parses line from hash file into three properties of a hash.
-        ' TODO: Update this to use regular expressions. Bug, doesnt only remove the first occurances.
+        ' TODO: Update this to use regular expressions. BUG, doesnt only remove the first occurances.
         Public Function parseHash(ByVal line As String) As List(Of String)
             Return line.Replace("Hash:", "").Replace("Salt:", "").Replace("HashType:", "").Replace(" ", "").Split(",").ToList()
         End Function
@@ -49,7 +53,11 @@ Module Parsing
                 Return _filePath
             End Get
             Set(value As String)
-                _filePath = value
+                If Path.GetExtension(value) = ".hff" Then
+                    _filePath = value
+                Else
+                    Throw New ArgumentOutOfRangeException("File Must Be .hff Format")
+                End If
             End Set
         End Property
     End Class

@@ -23,21 +23,22 @@ Public Class MainForm
     End Sub
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
-        OpenFileDialog.Title = "Target Selection"
-        OpenFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        OpenFileDialog.ShowDialog()
+        openFileDialog.Title = "Target Selection"
+        openFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openFileDialog.Filter = "Hash Formatted File (.hff)|*.hff"
+        openFileDialog.ShowDialog()
 
-        targetLabel.Text = OpenFileDialog.FileName
-        targetPath = OpenFileDialog.FileName
+        targetLabel.Text = openFileDialog.FileName
+        targetPath = openFileDialog.FileName
     End Sub
 
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click
-        OpenFileDialog.Title = "Storage Selection"
-        OpenFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        OpenFileDialog.ShowDialog()
+        openFileDialog.Title = "Storage Selection"
+        openFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openFileDialog.ShowDialog()
 
-        storageLabel.Text = OpenFileDialog.FileName
-        storagePath = OpenFileDialog.FileName
+        storageLabel.Text = openFileDialog.FileName
+        storagePath = openFileDialog.FileName
     End Sub
 
     Private Sub bruteforceRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles bruteforceRadioButton.CheckedChanged
@@ -49,11 +50,11 @@ Public Class MainForm
     End Sub
 
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
-        OpenFileDialog.Title = "Password List Selection"
-        OpenFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        OpenFileDialog.ShowDialog()
+        openFileDialog.Title = "Password List Selection"
+        openFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openFileDialog.ShowDialog()
 
-        passwordListLabel.Text = OpenFileDialog.FileName
+        passwordListLabel.Text = openFileDialog.FileName
     End Sub
 
     Private Sub startButton_Click(sender As Object, e As EventArgs) Handles startButton.Click
@@ -61,6 +62,9 @@ Public Class MainForm
         ' Checks given path information.
         If Not File.Exists(targetPath) Then
             MessageBox.Show("Invalid Target Path.")
+            Exit Sub
+        ElseIf Path.GetExtension(targetPath) <> ".hff" Then
+            MessageBox.Show("Target File Format Must Be '.hff'")
             Exit Sub
         End If
         If Not File.Exists(storagePath) Then

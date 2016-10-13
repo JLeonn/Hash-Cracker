@@ -46,7 +46,7 @@ Partial Class MainForm
         Me.bruteforceRadioButton = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.targetLabel = New System.Windows.Forms.Label()
-        Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.openFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.totalPossibleLabel = New System.Windows.Forms.Label()
@@ -68,6 +68,7 @@ Partial Class MainForm
         Me.Label13 = New System.Windows.Forms.Label()
         Me.timer = New System.Windows.Forms.Timer(Me.components)
         Me.stopButton = New System.Windows.Forms.Button()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -340,9 +341,9 @@ Partial Class MainForm
         Me.targetLabel.TabIndex = 5
         Me.targetLabel.Text = "No Target Selected."
         '
-        'OpenFileDialog
+        'openFileDialog
         '
-        Me.OpenFileDialog.FileName = "OpenFileDialog1"
+        Me.openFileDialog.FileName = "OpenFileDialog1"
         '
         'Label10
         '
@@ -523,7 +524,7 @@ Partial Class MainForm
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(586, 44)
+        Me.Label11.Location = New System.Drawing.Point(624, 44)
         Me.Label11.Name = "Label11"
         Me.Label11.Padding = New System.Windows.Forms.Padding(5)
         Me.Label11.Size = New System.Drawing.Size(97, 26)
@@ -535,7 +536,7 @@ Partial Class MainForm
         Me.storageLabel.AutoSize = True
         Me.storageLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.storageLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageLabel.Location = New System.Drawing.Point(689, 45)
+        Me.storageLabel.Location = New System.Drawing.Point(727, 47)
         Me.storageLabel.Name = "storageLabel"
         Me.storageLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.storageLabel.Size = New System.Drawing.Size(115, 25)
@@ -545,7 +546,7 @@ Partial Class MainForm
         'storageButton
         '
         Me.storageButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageButton.Location = New System.Drawing.Point(730, 12)
+        Me.storageButton.Location = New System.Drawing.Point(768, 12)
         Me.storageButton.Name = "storageButton"
         Me.storageButton.Size = New System.Drawing.Size(75, 23)
         Me.storageButton.TabIndex = 27
@@ -556,7 +557,7 @@ Partial Class MainForm
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(586, 9)
+        Me.Label13.Location = New System.Drawing.Point(624, 9)
         Me.Label13.Name = "Label13"
         Me.Label13.Padding = New System.Windows.Forms.Padding(5)
         Me.Label13.Size = New System.Drawing.Size(138, 26)
@@ -577,11 +578,22 @@ Partial Class MainForm
         Me.stopButton.Text = "Stop"
         Me.stopButton.UseVisualStyleBackColor = True
         '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(849, 12)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Padding = New System.Windows.Forms.Padding(5)
+        Me.Label19.Size = New System.Drawing.Size(10, 26)
+        Me.Label19.TabIndex = 31
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(855, 733)
+        Me.ClientSize = New System.Drawing.Size(1272, 733)
+        Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.stopButton)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.storageLabel)
@@ -626,7 +638,7 @@ Partial Class MainForm
     Friend WithEvents passwordListButton As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents targetLabel As Label
-    Friend WithEvents OpenFileDialog As OpenFileDialog
+    Friend WithEvents openFileDialog As OpenFileDialog
     Friend WithEvents passwordListLabel As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label10 As Label
@@ -650,4 +662,5 @@ Partial Class MainForm
     Friend WithEvents stopButton As Button
     Friend WithEvents totalPossibleLabel As Label
     Friend WithEvents Label18 As Label
+    Friend WithEvents Label19 As Label
 End Class
