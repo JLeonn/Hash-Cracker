@@ -132,7 +132,11 @@ Public Module HashCracking
         ' Total combinations due to current set brute force options.
         Public ReadOnly Property TotalCombinations As Long
             Get
-                Return Math.Pow(_charset.Length, _maximum)
+                Try
+                    Return Math.Pow(_charset.Length, _maximum)
+                Catch ex As OverflowException
+                    Return Long.MaxValue
+                End Try
             End Get
         End Property
     End Class
