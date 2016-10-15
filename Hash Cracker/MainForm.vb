@@ -88,12 +88,12 @@ Public Class MainForm
                     MessageBox.Show("No Charset Was Given.")
                     Exit Sub
                 End If
-                If minimumTextBox.Text = String.Empty Then
-                    MessageBox.Show("No Minimum Was Given.")
+                If minimumTextBox.Text = String.Empty Or Not Integer.TryParse(minimumTextBox.Text, Nothing) Then
+                    MessageBox.Show("Invalid Minimum Was Given.")
                     Exit Sub
                 End If
-                If maximumTextBox.Text = String.Empty Then
-                    MessageBox.Show("No Maximum Was Given")
+                If maximumTextBox.Text = String.Empty Or Not Integer.TryParse(maximumTextBox.Text, Nothing) Then
+                    MessageBox.Show("Invalid Maximum Was Given")
                     Exit Sub
                 End If
                 If minimumTextBox.Text > maximumTextBox.Text Then
@@ -159,6 +159,7 @@ Public Class MainForm
     End Sub
 
     ' Non Handlers
+    ' Builds charset that will be used to bruteforce a hash.
     Private Function buildCharset() As String
         Dim builder As New StringBuilder
 
