@@ -21,10 +21,10 @@ Public Class MainForm
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
         openTargetFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-        openTargetFileDialog.Filter = "Hash Formatted File (.hff)|*.hff"
+        openTargetFileDialog.Filter = "Hash File (.hash)|*.hash"
         openTargetFileDialog.ShowDialog()
 
-        If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hff" Then
+        If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
             targetLabel.Text = openTargetFileDialog.FileName
             targetPath = openTargetFileDialog.FileName
         Else

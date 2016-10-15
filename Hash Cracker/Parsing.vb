@@ -7,11 +7,11 @@ Module Parsing
         Private reader As StreamReader
 
         Public Sub New(ByVal filePath As String)
-            If Path.GetExtension(filePath) = ".hff" Then
+            If Path.GetExtension(filePath) = ".hash" Then
                 Me.FilePath = filePath
                 reader = New StreamReader(filePath)
             Else
-                Throw New ArgumentOutOfRangeException("File Must Be .hff Format")
+                Throw New ArgumentOutOfRangeException("File Must Be .hash Format")
             End If
         End Sub
 
@@ -53,10 +53,10 @@ Module Parsing
                 Return _filePath
             End Get
             Set(value As String)
-                If Path.GetExtension(value) = ".hff" Then
+                If Path.GetExtension(value) = ".hash" Then
                     _filePath = value
                 Else
-                    Throw New ArgumentOutOfRangeException("File Must Be .hff Format")
+                    Throw New ArgumentOutOfRangeException("File Must Be .hash Format")
                 End If
             End Set
         End Property
