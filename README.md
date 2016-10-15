@@ -1,7 +1,5 @@
 # Hash-Cracker
 
-Hash Cracker is a GUI application used to Crack .HASH files, written in VB.net.
+Hash Cracker is a GUI application used to Crack .HASH files.
 
-Supported Cracking Methods:
-  Brute Force
-  Dictionary
+Supported Cracking Methods: Brute Force, Dictionary
