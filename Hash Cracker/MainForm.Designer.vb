@@ -70,15 +70,17 @@ Partial Class MainForm
         Me.stopButton = New System.Windows.Forms.Button()
         Me.openStorageFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.openPasswordFileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 9)
+        Me.Label2.Location = New System.Drawing.Point(6, 22)
         Me.Label2.Name = "Label2"
         Me.Label2.Padding = New System.Windows.Forms.Padding(5)
         Me.Label2.Size = New System.Drawing.Size(130, 26)
@@ -88,7 +90,7 @@ Partial Class MainForm
         'targetButton
         '
         Me.targetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.targetButton.Location = New System.Drawing.Point(148, 12)
+        Me.targetButton.Location = New System.Drawing.Point(142, 25)
         Me.targetButton.Name = "targetButton"
         Me.targetButton.Size = New System.Drawing.Size(75, 23)
         Me.targetButton.TabIndex = 2
@@ -117,10 +119,10 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 78)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0, 15, 17, 15)
-        Me.GroupBox1.Size = New System.Drawing.Size(673, 372)
+        Me.GroupBox1.Size = New System.Drawing.Size(960, 372)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Attack Method"
@@ -129,7 +131,7 @@ Partial Class MainForm
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(4, 318)
+        Me.Label8.Location = New System.Drawing.Point(7, 327)
         Me.Label8.Name = "Label8"
         Me.Label8.Padding = New System.Windows.Forms.Padding(5)
         Me.Label8.Size = New System.Drawing.Size(109, 26)
@@ -140,18 +142,18 @@ Partial Class MainForm
         '
         Me.passwordListLabel.AutoSize = True
         Me.passwordListLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.passwordListLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.passwordListLabel.Location = New System.Drawing.Point(119, 319)
+        Me.passwordListLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.passwordListLabel.Location = New System.Drawing.Point(122, 327)
         Me.passwordListLabel.Name = "passwordListLabel"
         Me.passwordListLabel.Padding = New System.Windows.Forms.Padding(5)
-        Me.passwordListLabel.Size = New System.Drawing.Size(149, 25)
+        Me.passwordListLabel.Size = New System.Drawing.Size(184, 28)
         Me.passwordListLabel.TabIndex = 20
         Me.passwordListLabel.Text = "No Password List Selected."
         '
         'passwordListButton
         '
         Me.passwordListButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.passwordListButton.Location = New System.Drawing.Point(155, 284)
+        Me.passwordListButton.Location = New System.Drawing.Point(160, 293)
         Me.passwordListButton.Name = "passwordListButton"
         Me.passwordListButton.Size = New System.Drawing.Size(75, 23)
         Me.passwordListButton.TabIndex = 19
@@ -162,7 +164,7 @@ Partial Class MainForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(4, 281)
+        Me.Label4.Location = New System.Drawing.Point(7, 290)
         Me.Label4.Name = "Label4"
         Me.Label4.Padding = New System.Windows.Forms.Padding(5)
         Me.Label4.Size = New System.Drawing.Size(147, 26)
@@ -173,7 +175,7 @@ Partial Class MainForm
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(3, 240)
+        Me.Label9.Location = New System.Drawing.Point(1, 240)
         Me.Label9.Name = "Label9"
         Me.Label9.Padding = New System.Windows.Forms.Padding(0, 15, 15, 15)
         Me.Label9.Size = New System.Drawing.Size(94, 50)
@@ -301,7 +303,7 @@ Partial Class MainForm
         '
         Me.dictionaryRadioButton.AutoSize = True
         Me.dictionaryRadioButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dictionaryRadioButton.Location = New System.Drawing.Point(101, 262)
+        Me.dictionaryRadioButton.Location = New System.Drawing.Point(97, 260)
         Me.dictionaryRadioButton.Name = "dictionaryRadioButton"
         Me.dictionaryRadioButton.Size = New System.Drawing.Size(14, 13)
         Me.dictionaryRadioButton.TabIndex = 4
@@ -334,11 +336,11 @@ Partial Class MainForm
         '
         Me.targetLabel.AutoSize = True
         Me.targetLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.targetLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.targetLabel.Location = New System.Drawing.Point(107, 47)
+        Me.targetLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.targetLabel.Location = New System.Drawing.Point(101, 59)
         Me.targetLabel.Name = "targetLabel"
         Me.targetLabel.Padding = New System.Windows.Forms.Padding(5)
-        Me.targetLabel.Size = New System.Drawing.Size(140, 25)
+        Me.targetLabel.Size = New System.Drawing.Size(171, 28)
         Me.targetLabel.TabIndex = 5
         Me.targetLabel.Text = "No Target Path Selected."
         '
@@ -350,7 +352,7 @@ Partial Class MainForm
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(12, 44)
+        Me.Label10.Location = New System.Drawing.Point(6, 59)
         Me.Label10.Name = "Label10"
         Me.Label10.Padding = New System.Windows.Forms.Padding(5)
         Me.Label10.Size = New System.Drawing.Size(89, 26)
@@ -372,9 +374,9 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.statusLabel)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 456)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 575)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(673, 190)
+        Me.GroupBox2.Size = New System.Drawing.Size(960, 190)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Statistics"
@@ -514,7 +516,7 @@ Partial Class MainForm
         'startButton
         '
         Me.startButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.Location = New System.Drawing.Point(6, 652)
+        Me.startButton.Location = New System.Drawing.Point(13, 771)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 24
@@ -525,7 +527,7 @@ Partial Class MainForm
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(691, 38)
+        Me.Label11.Location = New System.Drawing.Point(6, 131)
         Me.Label11.Name = "Label11"
         Me.Label11.Padding = New System.Windows.Forms.Padding(5)
         Me.Label11.Size = New System.Drawing.Size(97, 26)
@@ -536,18 +538,18 @@ Partial Class MainForm
         '
         Me.storageLabel.AutoSize = True
         Me.storageLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.storageLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageLabel.Location = New System.Drawing.Point(794, 39)
+        Me.storageLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.storageLabel.Location = New System.Drawing.Point(101, 131)
         Me.storageLabel.Name = "storageLabel"
         Me.storageLabel.Padding = New System.Windows.Forms.Padding(5)
-        Me.storageLabel.Size = New System.Drawing.Size(146, 25)
+        Me.storageLabel.Size = New System.Drawing.Size(179, 28)
         Me.storageLabel.TabIndex = 28
         Me.storageLabel.Text = "No Storage Path Selected."
         '
         'storageButton
         '
         Me.storageButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageButton.Location = New System.Drawing.Point(835, 12)
+        Me.storageButton.Location = New System.Drawing.Point(142, 99)
         Me.storageButton.Name = "storageButton"
         Me.storageButton.Size = New System.Drawing.Size(75, 23)
         Me.storageButton.TabIndex = 27
@@ -558,7 +560,7 @@ Partial Class MainForm
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(691, 9)
+        Me.Label13.Location = New System.Drawing.Point(6, 96)
         Me.Label13.Name = "Label13"
         Me.Label13.Padding = New System.Windows.Forms.Padding(5)
         Me.Label13.Size = New System.Drawing.Size(138, 26)
@@ -572,7 +574,7 @@ Partial Class MainForm
         'stopButton
         '
         Me.stopButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stopButton.Location = New System.Drawing.Point(87, 652)
+        Me.stopButton.Location = New System.Drawing.Point(94, 771)
         Me.stopButton.Name = "stopButton"
         Me.stopButton.Size = New System.Drawing.Size(75, 23)
         Me.stopButton.TabIndex = 30
@@ -587,23 +589,34 @@ Partial Class MainForm
         '
         Me.openPasswordFileDialog.Title = "Password List Selection"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label2)
+        Me.GroupBox3.Controls.Add(Me.targetButton)
+        Me.GroupBox3.Controls.Add(Me.storageLabel)
+        Me.GroupBox3.Controls.Add(Me.Label11)
+        Me.GroupBox3.Controls.Add(Me.Label10)
+        Me.GroupBox3.Controls.Add(Me.targetLabel)
+        Me.GroupBox3.Controls.Add(Me.storageButton)
+        Me.GroupBox3.Controls.Add(Me.Label13)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(13, 12)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(960, 179)
+        Me.GroupBox3.TabIndex = 31
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "File Selection"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1272, 733)
+        Me.ClientSize = New System.Drawing.Size(1362, 864)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.stopButton)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.storageLabel)
-        Me.Controls.Add(Me.storageButton)
-        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.startButton)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.targetLabel)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.targetButton)
-        Me.Controls.Add(Me.Label2)
         Me.Name = "MainForm"
         Me.Text = "Hash Cracker"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -611,8 +624,9 @@ Partial Class MainForm
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label2 As Label
@@ -662,4 +676,5 @@ Partial Class MainForm
     Friend WithEvents Label18 As Label
     Friend WithEvents openStorageFileDialog As OpenFileDialog
     Friend WithEvents openPasswordFileDialog As OpenFileDialog
+    Friend WithEvents GroupBox3 As GroupBox
 End Class

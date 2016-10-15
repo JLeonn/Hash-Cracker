@@ -9,7 +9,7 @@ Public Class MainForm
 
     Private attackMethod As String
     Private targetPath As String
-    Private storagePath As String = defaultStoragePath
+    Private storagePath As String
     Private passwordListPath As String
     Private attackManager As AttackManager
     Private statThread As Thread
@@ -18,6 +18,11 @@ Public Class MainForm
     Private Delegate Sub SetTextCallBack([text] As String, label As Label)
 
     Private elapsedTime As Integer
+
+    Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        storagePath = defaultStoragePath
+        storageLabel.Text = defaultStoragePath
+    End Sub
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
         openTargetFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
@@ -34,6 +39,7 @@ Public Class MainForm
 
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click
         openStorageFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openStorageFileDialog.Filter = "Text File (.txt)|*.txt"
         openStorageFileDialog.ShowDialog()
 
         If File.Exists(openStorageFileDialog.FileName) Then
@@ -55,6 +61,7 @@ Public Class MainForm
 
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
         openPasswordFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openPasswordFileDialog.Filter = "Text File (.txt)|*.txt"
         openPasswordFileDialog.ShowDialog()
 
         If File.Exists(openPasswordFileDialog.FileName) Then
@@ -152,6 +159,33 @@ Public Class MainForm
     End Sub
 
     ' Non Handlers
+    Private Function buildCharset() As String
+        Dim builder As New StringBuilder
+
+        If lowerCaseCheckBox.Checked Then
+            builder.Append(LOWER_CASES)
+        End If
+
+        If upperCaseCheckBox.Checked Then
+            builder.Append(UPPER_CASES)
+        End If
+
+        If numberCheckBox.Checked Then
+            builder.Append(NUMBERS)
+        End If
+
+        If symbolsCheckBox.Checked Then
+            builder.Append(SYMBOLS)
+        End If
+
+        If spacesCheckBox.Checked Then
+            builder.Append(SPACES)
+        End If
+
+        Return builder.ToString()
+    End Function
+
+
     ' Flips the attack option between the bruteforce and dictionary attack.
     Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
         ' Sets the attak accordingly
@@ -163,6 +197,7 @@ Public Class MainForm
 
         ' Dictionary options
         passwordListButton.Enabled = dictionaryOption
+        passwordListLabel.Enabled = dictionaryOption
 
         ' Bruteforce options
         lowerCaseCheckBox.Enabled = bruteForceOption
@@ -173,34 +208,6 @@ Public Class MainForm
         minimumTextBox.Enabled = bruteForceOption
         maximumTextBox.Enabled = bruteForceOption
     End Sub
-
-    ' Builds the wanted character set via check boxes.
-    Private Function buildCharset() As String
-        Dim charset As New StringBuilder
-
-        ' Checks each textbox and builds a string whether the box is checked or not.
-        If lowerCaseCheckBox.Checked Then
-            charset.Append(LOWER_CASES)
-        End If
-
-        If upperCaseCheckBox.Checked Then
-            charset.Append(UPPER_CASES)
-        End If
-
-        If numberCheckBox.Checked Then
-            charset.Append(NUMBERS)
-        End If
-
-        If symbolsCheckBox.Checked Then
-            charset.Append(SYMBOLS)
-        End If
-
-        If spacesCheckBox.Checked Then
-            charset.Append(SPACES)
-        End If
-
-        Return charset.ToString()
-    End Function
 
     ' The threaded action that maintains the statistal tab.
     Public Sub updateStats()
