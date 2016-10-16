@@ -73,6 +73,10 @@ Public Class MainForm
     End Sub
 
     Private Sub startButton_Click(sender As Object, e As EventArgs) Handles startButton.Click
+        If statusLabel.Text = "Running" Then
+            Exit Sub
+        End If
+
         If targetPath = Nothing Then
             MessageBox.Show("No Target Selected.")
             Exit Sub
@@ -105,7 +109,7 @@ Public Class MainForm
                 Dim attacker As New BruteForce(charset, minimumTextBox.Text, maximumTextBox.Text)
                 attackManager.Attacker = attacker
                 totalPossibleLabel.Enabled = True
-                totalPossibleLabel.Text = attacker.TotalCombinations
+                totalPossibleLabel.Text = attacker.TotalCombinations.ToString("N0")
             Case "dictionary"
                 ' Checks information need to commence a dictinary attack
                 If passwordListPath = Nothing Then
@@ -155,7 +159,7 @@ Public Class MainForm
         elapsedTime += 1
         Dim time = TimeSpan.FromSeconds(elapsedTime)
         elapsedTimeLabel.Text = time.ToString("hh\:mm\:ss")
-        attemptsPerSecondLabel.Text = Math.Round(currentAttemptsLabel.Text / elapsedTime, 2)
+        attemptsPerSecondLabel.Text = Math.Round(currentAttemptsLabel.Text / elapsedTime, 2).ToString("N2")
     End Sub
 
     ' Non Handlers
@@ -214,7 +218,7 @@ Public Class MainForm
     Public Sub updateStats()
         While attackManager.Running
             updateLabel(attackManager.HashesCracked, hashesBrokeLabel)
-            updateLabel(attackManager.Attacker.Attempts, currentAttemptsLabel)
+            updateLabel(attackManager.Attacker.Attempts.ToString("N0"), currentAttemptsLabel)
         End While
         updateLabel("Stopped", statusLabel)
         timer.Enabled = False

@@ -80,7 +80,7 @@ Partial Class MainForm
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 22)
+        Me.Label2.Location = New System.Drawing.Point(7, 28)
         Me.Label2.Name = "Label2"
         Me.Label2.Padding = New System.Windows.Forms.Padding(5)
         Me.Label2.Size = New System.Drawing.Size(130, 26)
@@ -90,7 +90,7 @@ Partial Class MainForm
         'targetButton
         '
         Me.targetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.targetButton.Location = New System.Drawing.Point(142, 25)
+        Me.targetButton.Location = New System.Drawing.Point(143, 28)
         Me.targetButton.Name = "targetButton"
         Me.targetButton.Size = New System.Drawing.Size(75, 23)
         Me.targetButton.TabIndex = 2
@@ -118,11 +118,11 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.dictionaryRadioButton)
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0, 15, 17, 15)
-        Me.GroupBox1.Size = New System.Drawing.Size(960, 372)
+        Me.GroupBox1.Size = New System.Drawing.Size(920, 372)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Attack Method"
@@ -337,7 +337,7 @@ Partial Class MainForm
         Me.targetLabel.AutoSize = True
         Me.targetLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.targetLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.targetLabel.Location = New System.Drawing.Point(101, 59)
+        Me.targetLabel.Location = New System.Drawing.Point(102, 61)
         Me.targetLabel.Name = "targetLabel"
         Me.targetLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.targetLabel.Size = New System.Drawing.Size(171, 28)
@@ -352,7 +352,7 @@ Partial Class MainForm
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(6, 59)
+        Me.Label10.Location = New System.Drawing.Point(7, 61)
         Me.Label10.Name = "Label10"
         Me.Label10.Padding = New System.Windows.Forms.Padding(5)
         Me.Label10.Size = New System.Drawing.Size(89, 26)
@@ -373,10 +373,10 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Controls.Add(Me.statusLabel)
         Me.GroupBox2.Controls.Add(Me.Label12)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(13, 575)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(960, 190)
+        Me.GroupBox2.Size = New System.Drawing.Size(920, 219)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Statistics"
@@ -385,7 +385,7 @@ Partial Class MainForm
         '
         Me.totalPossibleLabel.AutoSize = True
         Me.totalPossibleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.totalPossibleLabel.Location = New System.Drawing.Point(176, 127)
+        Me.totalPossibleLabel.Location = New System.Drawing.Point(185, 131)
         Me.totalPossibleLabel.Name = "totalPossibleLabel"
         Me.totalPossibleLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.totalPossibleLabel.Size = New System.Drawing.Size(23, 23)
@@ -396,7 +396,7 @@ Partial Class MainForm
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(4, 125)
+        Me.Label18.Location = New System.Drawing.Point(13, 129)
         Me.Label18.Name = "Label18"
         Me.Label18.Padding = New System.Windows.Forms.Padding(5)
         Me.Label18.Size = New System.Drawing.Size(166, 26)
@@ -407,7 +407,7 @@ Partial Class MainForm
         '
         Me.elapsedTimeLabel.AutoSize = True
         Me.elapsedTimeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.elapsedTimeLabel.Location = New System.Drawing.Point(121, 154)
+        Me.elapsedTimeLabel.Location = New System.Drawing.Point(128, 158)
         Me.elapsedTimeLabel.Name = "elapsedTimeLabel"
         Me.elapsedTimeLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.elapsedTimeLabel.Size = New System.Drawing.Size(59, 23)
@@ -418,7 +418,7 @@ Partial Class MainForm
         '
         Me.attemptsPerSecondLabel.AutoSize = True
         Me.attemptsPerSecondLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.attemptsPerSecondLabel.Location = New System.Drawing.Point(143, 102)
+        Me.attemptsPerSecondLabel.Location = New System.Drawing.Point(152, 106)
         Me.attemptsPerSecondLabel.Name = "attemptsPerSecondLabel"
         Me.attemptsPerSecondLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.attemptsPerSecondLabel.Size = New System.Drawing.Size(23, 23)
@@ -429,7 +429,7 @@ Partial Class MainForm
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(4, 100)
+        Me.Label17.Location = New System.Drawing.Point(13, 103)
         Me.Label17.Name = "Label17"
         Me.Label17.Padding = New System.Windows.Forms.Padding(5)
         Me.Label17.Size = New System.Drawing.Size(133, 26)
@@ -440,7 +440,7 @@ Partial Class MainForm
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(6, 151)
+        Me.Label16.Location = New System.Drawing.Point(13, 155)
         Me.Label16.Name = "Label16"
         Me.Label16.Padding = New System.Windows.Forms.Padding(5)
         Me.Label16.Size = New System.Drawing.Size(109, 26)
@@ -451,7 +451,7 @@ Partial Class MainForm
         '
         Me.currentAttemptsLabel.AutoSize = True
         Me.currentAttemptsLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.currentAttemptsLabel.Location = New System.Drawing.Point(86, 77)
+        Me.currentAttemptsLabel.Location = New System.Drawing.Point(95, 80)
         Me.currentAttemptsLabel.Name = "currentAttemptsLabel"
         Me.currentAttemptsLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.currentAttemptsLabel.Size = New System.Drawing.Size(23, 23)
@@ -462,7 +462,7 @@ Partial Class MainForm
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(4, 74)
+        Me.Label14.Location = New System.Drawing.Point(13, 77)
         Me.Label14.Name = "Label14"
         Me.Label14.Padding = New System.Windows.Forms.Padding(5)
         Me.Label14.Size = New System.Drawing.Size(76, 26)
@@ -473,7 +473,7 @@ Partial Class MainForm
         '
         Me.hashesBrokeLabel.AutoSize = True
         Me.hashesBrokeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.hashesBrokeLabel.Location = New System.Drawing.Point(120, 51)
+        Me.hashesBrokeLabel.Location = New System.Drawing.Point(129, 54)
         Me.hashesBrokeLabel.Name = "hashesBrokeLabel"
         Me.hashesBrokeLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.hashesBrokeLabel.Size = New System.Drawing.Size(23, 23)
@@ -484,7 +484,7 @@ Partial Class MainForm
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(4, 48)
+        Me.Label15.Location = New System.Drawing.Point(13, 51)
         Me.Label15.Name = "Label15"
         Me.Label15.Padding = New System.Windows.Forms.Padding(5)
         Me.Label15.Size = New System.Drawing.Size(110, 26)
@@ -494,11 +494,11 @@ Partial Class MainForm
         'statusLabel
         '
         Me.statusLabel.AutoSize = True
-        Me.statusLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.statusLabel.Location = New System.Drawing.Point(71, 22)
+        Me.statusLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.statusLabel.Location = New System.Drawing.Point(80, 25)
         Me.statusLabel.Name = "statusLabel"
         Me.statusLabel.Padding = New System.Windows.Forms.Padding(5)
-        Me.statusLabel.Size = New System.Drawing.Size(57, 23)
+        Me.statusLabel.Size = New System.Drawing.Size(70, 26)
         Me.statusLabel.TabIndex = 1
         Me.statusLabel.Text = "Stopped"
         '
@@ -506,7 +506,7 @@ Partial Class MainForm
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(4, 22)
+        Me.Label12.Location = New System.Drawing.Point(13, 25)
         Me.Label12.Name = "Label12"
         Me.Label12.Padding = New System.Windows.Forms.Padding(5)
         Me.Label12.Size = New System.Drawing.Size(61, 26)
@@ -516,7 +516,7 @@ Partial Class MainForm
         'startButton
         '
         Me.startButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.Location = New System.Drawing.Point(13, 771)
+        Me.startButton.Location = New System.Drawing.Point(12, 800)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 24
@@ -527,7 +527,7 @@ Partial Class MainForm
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(6, 131)
+        Me.Label11.Location = New System.Drawing.Point(7, 139)
         Me.Label11.Name = "Label11"
         Me.Label11.Padding = New System.Windows.Forms.Padding(5)
         Me.Label11.Size = New System.Drawing.Size(97, 26)
@@ -539,7 +539,7 @@ Partial Class MainForm
         Me.storageLabel.AutoSize = True
         Me.storageLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.storageLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageLabel.Location = New System.Drawing.Point(101, 131)
+        Me.storageLabel.Location = New System.Drawing.Point(110, 139)
         Me.storageLabel.Name = "storageLabel"
         Me.storageLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.storageLabel.Size = New System.Drawing.Size(179, 28)
@@ -549,7 +549,7 @@ Partial Class MainForm
         'storageButton
         '
         Me.storageButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageButton.Location = New System.Drawing.Point(142, 99)
+        Me.storageButton.Location = New System.Drawing.Point(151, 105)
         Me.storageButton.Name = "storageButton"
         Me.storageButton.Size = New System.Drawing.Size(75, 23)
         Me.storageButton.TabIndex = 27
@@ -560,7 +560,7 @@ Partial Class MainForm
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(6, 96)
+        Me.Label13.Location = New System.Drawing.Point(7, 102)
         Me.Label13.Name = "Label13"
         Me.Label13.Padding = New System.Windows.Forms.Padding(5)
         Me.Label13.Size = New System.Drawing.Size(138, 26)
@@ -574,7 +574,7 @@ Partial Class MainForm
         'stopButton
         '
         Me.stopButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stopButton.Location = New System.Drawing.Point(94, 771)
+        Me.stopButton.Location = New System.Drawing.Point(93, 800)
         Me.stopButton.Name = "stopButton"
         Me.stopButton.Size = New System.Drawing.Size(75, 23)
         Me.stopButton.TabIndex = 30
@@ -599,10 +599,10 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.targetLabel)
         Me.GroupBox3.Controls.Add(Me.storageButton)
         Me.GroupBox3.Controls.Add(Me.Label13)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(960, 179)
+        Me.GroupBox3.Size = New System.Drawing.Size(920, 179)
         Me.GroupBox3.TabIndex = 31
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "File Selection"
