@@ -72,14 +72,9 @@ Partial Class MainForm
         Me.openStorageFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.openPasswordFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.menuStrip = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.menuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -125,7 +120,7 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 222)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0, 15, 17, 15)
         Me.GroupBox1.Size = New System.Drawing.Size(920, 372)
@@ -380,7 +375,7 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.statusLabel)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(13, 600)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 575)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(920, 197)
         Me.GroupBox2.TabIndex = 23
@@ -522,7 +517,7 @@ Partial Class MainForm
         'startButton
         '
         Me.startButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.Location = New System.Drawing.Point(12, 803)
+        Me.startButton.Location = New System.Drawing.Point(13, 778)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 24
@@ -580,7 +575,7 @@ Partial Class MainForm
         'stopButton
         '
         Me.stopButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stopButton.Location = New System.Drawing.Point(92, 803)
+        Me.stopButton.Location = New System.Drawing.Point(94, 778)
         Me.stopButton.Name = "stopButton"
         Me.stopButton.Size = New System.Drawing.Size(75, 23)
         Me.stopButton.TabIndex = 30
@@ -606,40 +601,12 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.storageButton)
         Me.GroupBox3.Controls.Add(Me.Label13)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(13, 37)
+        Me.GroupBox3.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(920, 179)
         Me.GroupBox3.TabIndex = 31
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "File Selection"
-        '
-        'menuStrip
-        '
-        Me.menuStrip.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
-        Me.menuStrip.Location = New System.Drawing.Point(0, 0)
-        Me.menuStrip.Name = "menuStrip"
-        Me.menuStrip.Size = New System.Drawing.Size(1337, 25)
-        Me.menuStrip.TabIndex = 32
-        Me.menuStrip.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(39, 21)
-        Me.FileToolStripMenuItem.Text = "File"
-        '
-        'SettingsToolStripMenuItem
-        '
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(66, 21)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 21)
-        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'MainForm
         '
@@ -652,9 +619,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.startButton)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.menuStrip)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MainMenuStrip = Me.menuStrip
         Me.Name = "MainForm"
         Me.Text = "Hash Cracker"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -664,10 +629,7 @@ Partial Class MainForm
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.menuStrip.ResumeLayout(False)
-        Me.menuStrip.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label2 As Label
@@ -718,8 +680,4 @@ Partial Class MainForm
     Friend WithEvents openStorageFileDialog As OpenFileDialog
     Friend WithEvents openPasswordFileDialog As OpenFileDialog
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents menuStrip As MenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
 End Class
