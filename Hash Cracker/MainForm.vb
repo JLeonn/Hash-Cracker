@@ -144,11 +144,7 @@ Public Class MainForm
     ' Haults the attack manager
     ' Stops the timer.
     Private Sub stopButton_Click(sender As Object, e As EventArgs) Handles stopButton.Click
-        If IsNothing(attackManager) Then
-            Exit Sub
-        End If
-
-        If attackManager.Running Then
+        If statusLabel.Text = "Running" Then
             statusLabel.Text = "Stopped"
             attackManager.hault()
             timer.Enabled = False
@@ -215,16 +211,6 @@ Public Class MainForm
         maximumTextBox.Enabled = bruteForceOption
     End Sub
 
-    ' The threaded action that maintains the statistal tab.
-    Public Sub updateStats()
-        While attackManager.Running
-            updateLabel(attackManager.HashesCracked, hashesBrokeLabel)
-            updateLabel(attackManager.Attacker.Attempts.ToString("N0"), currentAttemptsLabel)
-        End While
-        updateLabel("Stopped", statusLabel)
-        timer.Enabled = False
-    End Sub
-
     ' Thread safe function used to update Labels on a different thread.
     ' Used in conjunction with 'updateStats'
     Private Sub updateLabel(ByVal [text] As String, label As Label)
@@ -234,5 +220,15 @@ Public Class MainForm
         Else
             label.Text = [text]
         End If
+    End Sub
+
+    ' The threaded action that maintains the statistal tab.
+    Public Sub updateStats()
+        While attackManager.Running
+            updateLabel(attackManager.HashesCracked, hashesBrokeLabel)
+            updateLabel(attackManager.Attacker.Attempts.ToString("N0"), currentAttemptsLabel)
+        End While
+        updateLabel("Stopped", statusLabel)
+        timer.Enabled = False
     End Sub
 End Class
