@@ -644,6 +644,7 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1362, 864)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.stopButton)
