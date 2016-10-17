@@ -20,6 +20,7 @@ Public Class MainForm
     Private elapsedTime As Integer
 
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        Icon = My.Resources.HashIcon
         storagePath = defaultStoragePath
         storageLabel.Text = defaultStoragePath
     End Sub
