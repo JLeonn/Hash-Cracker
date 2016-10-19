@@ -22,6 +22,7 @@ Public Class MainForm
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         compactor = New PathCompactor(defaultStoragePath)
         storageLabel.Text = compactor.compact()
+        toolTip.SetToolTip(storageLabel, defaultStoragePath)
         storagePath = defaultStoragePath
     End Sub
 
@@ -33,6 +34,7 @@ Public Class MainForm
         If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
             compactor.Path = openTargetFileDialog.FileName
             targetLabel.Text = compactor.compact()
+            toolTip.SetToolTip(targetLabel, openTargetFileDialog.FileName)
             targetPath = openTargetFileDialog.FileName
         Else
             targetLabel.Text = "No Target Selected."
@@ -47,6 +49,7 @@ Public Class MainForm
         If File.Exists(openStorageFileDialog.FileName) Then
             compactor.Path = openStorageFileDialog.FileName
             storageLabel.Text = compactor.compact()
+            toolTip.SetToolTip(storageLabel, openStorageFileDialog.FileName)
             storagePath = openStorageFileDialog.FileName
         Else
             storageLabel.Text = "No Storage Path Selected."
@@ -70,6 +73,7 @@ Public Class MainForm
         If File.Exists(openPasswordFileDialog.FileName) Then
             compactor.Path = openPasswordFileDialog.FileName
             passwordListLabel.Text = compactor.compact()
+            toolTip.SetToolTip(passwordListLabel, openPasswordFileDialog.FileName)
             passwordListPath = openPasswordFileDialog.FileName
         Else
             storageLabel.Text = "No Password List Selected."

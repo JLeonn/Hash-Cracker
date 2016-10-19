@@ -72,6 +72,7 @@ Partial Class MainForm
         Me.openStorageFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.openPasswordFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.toolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -680,4 +681,5 @@ Partial Class MainForm
     Friend WithEvents openStorageFileDialog As OpenFileDialog
     Friend WithEvents openPasswordFileDialog As OpenFileDialog
     Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents toolTip As ToolTip
 End Class
