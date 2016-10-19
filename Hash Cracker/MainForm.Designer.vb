@@ -120,7 +120,7 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 128)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0, 15, 17, 15)
         Me.GroupBox1.Size = New System.Drawing.Size(920, 372)
@@ -375,7 +375,7 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.statusLabel)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(13, 575)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 506)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(920, 197)
         Me.GroupBox2.TabIndex = 23
@@ -517,7 +517,7 @@ Partial Class MainForm
         'startButton
         '
         Me.startButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.Location = New System.Drawing.Point(13, 778)
+        Me.startButton.Location = New System.Drawing.Point(12, 709)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 24
@@ -528,7 +528,7 @@ Partial Class MainForm
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(7, 139)
+        Me.Label11.Location = New System.Drawing.Point(467, 61)
         Me.Label11.Name = "Label11"
         Me.Label11.Padding = New System.Windows.Forms.Padding(5)
         Me.Label11.Size = New System.Drawing.Size(97, 26)
@@ -540,7 +540,7 @@ Partial Class MainForm
         Me.storageLabel.AutoSize = True
         Me.storageLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.storageLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageLabel.Location = New System.Drawing.Point(110, 139)
+        Me.storageLabel.Location = New System.Drawing.Point(570, 61)
         Me.storageLabel.Name = "storageLabel"
         Me.storageLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.storageLabel.Size = New System.Drawing.Size(179, 28)
@@ -550,7 +550,7 @@ Partial Class MainForm
         'storageButton
         '
         Me.storageButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.storageButton.Location = New System.Drawing.Point(151, 105)
+        Me.storageButton.Location = New System.Drawing.Point(611, 31)
         Me.storageButton.Name = "storageButton"
         Me.storageButton.Size = New System.Drawing.Size(75, 23)
         Me.storageButton.TabIndex = 27
@@ -561,7 +561,7 @@ Partial Class MainForm
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(7, 102)
+        Me.Label13.Location = New System.Drawing.Point(467, 25)
         Me.Label13.Name = "Label13"
         Me.Label13.Padding = New System.Windows.Forms.Padding(5)
         Me.Label13.Size = New System.Drawing.Size(138, 26)
@@ -575,7 +575,7 @@ Partial Class MainForm
         'stopButton
         '
         Me.stopButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stopButton.Location = New System.Drawing.Point(94, 778)
+        Me.stopButton.Location = New System.Drawing.Point(96, 709)
         Me.stopButton.Name = "stopButton"
         Me.stopButton.Size = New System.Drawing.Size(75, 23)
         Me.stopButton.TabIndex = 30
@@ -603,7 +603,7 @@ Partial Class MainForm
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(920, 179)
+        Me.GroupBox3.Size = New System.Drawing.Size(920, 110)
         Me.GroupBox3.TabIndex = 31
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "File Selection"
@@ -613,7 +613,7 @@ Partial Class MainForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1354, 733)
+        Me.ClientSize = New System.Drawing.Size(959, 743)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.stopButton)
         Me.Controls.Add(Me.startButton)

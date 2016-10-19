@@ -7,21 +7,22 @@ Public Class MainForm
     Private parentDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
     Private defaultStoragePath = parentDirectory & "\Crack Session.txt"
 
-    Private attackMethod As String
-    Private targetPath As String
-    Private storagePath As String
-    Private passwordListPath As String
     Private attackManager As AttackManager
+    Private attackMethod As String
+    Private compactor As PathCompactor
+    Private elapsedTime As Integer
+    Private passwordListPath As String
     Private statThread As Thread
+    Private storagePath As String
+    Private targetPath As String
 
     'Thread safe delegate sub used to update label text properties on different threads.
     Private Delegate Sub SetTextCallBack([text] As String, label As Label)
 
-    Private elapsedTime As Integer
-
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        compactor = New PathCompactor(defaultStoragePath)
+        storageLabel.Text = compactor.compact()
         storagePath = defaultStoragePath
-        storageLabel.Text = defaultStoragePath
     End Sub
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
@@ -30,7 +31,8 @@ Public Class MainForm
         openTargetFileDialog.ShowDialog()
 
         If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
-            targetLabel.Text = openTargetFileDialog.FileName
+            compactor.Path = openTargetFileDialog.FileName
+            targetLabel.Text = compactor.compact()
             targetPath = openTargetFileDialog.FileName
         Else
             targetLabel.Text = "No Target Selected."
@@ -43,7 +45,8 @@ Public Class MainForm
         openStorageFileDialog.ShowDialog()
 
         If File.Exists(openStorageFileDialog.FileName) Then
-            storageLabel.Text = openStorageFileDialog.FileName
+            compactor.Path = openStorageFileDialog.FileName
+            storageLabel.Text = compactor.compact()
             storagePath = openStorageFileDialog.FileName
         Else
             storageLabel.Text = "No Storage Path Selected."
@@ -65,7 +68,8 @@ Public Class MainForm
         openPasswordFileDialog.ShowDialog()
 
         If File.Exists(openPasswordFileDialog.FileName) Then
-            passwordListLabel.Text = openPasswordFileDialog.FileName
+            compactor.Path = openPasswordFileDialog.FileName
+            passwordListLabel.Text = compactor.compact()
             passwordListPath = openPasswordFileDialog.FileName
         Else
             storageLabel.Text = "No Password List Selected."
