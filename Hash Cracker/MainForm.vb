@@ -25,7 +25,7 @@ Public Class MainForm
     End Sub
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
-        openTargetFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openTargetFileDialog.InitialDirectory = parentDirectory
         openTargetFileDialog.Filter = "Hash File (.hash)|*.hash"
         openTargetFileDialog.ShowDialog()
 
@@ -38,7 +38,7 @@ Public Class MainForm
     End Sub
 
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click
-        openStorageFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openStorageFileDialog.InitialDirectory = parentDirectory
         openStorageFileDialog.Filter = "Text File (.txt)|*.txt"
         openStorageFileDialog.ShowDialog()
 
@@ -60,7 +60,7 @@ Public Class MainForm
     End Sub
 
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
-        openPasswordFileDialog.InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+        openPasswordFileDialog.InitialDirectory = parentDirectory
         openPasswordFileDialog.Filter = "Text File (.txt)|*.txt"
         openPasswordFileDialog.ShowDialog()
 
