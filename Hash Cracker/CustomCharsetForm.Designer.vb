@@ -27,6 +27,12 @@ Partial Class CustomCharsetForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.textBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.spacesCheckBox = New System.Windows.Forms.CheckBox()
+        Me.symbolsCheckBox = New System.Windows.Forms.CheckBox()
+        Me.numberCheckBox = New System.Windows.Forms.CheckBox()
+        Me.upperCaseCheckBox = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lowerCaseCheckBox = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'setCharsetButton
@@ -50,10 +56,51 @@ Partial Class CustomCharsetForm
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
         '
+        'spacesCheckBox
+        '
+        resources.ApplyResources(Me.spacesCheckBox, "spacesCheckBox")
+        Me.spacesCheckBox.Name = "spacesCheckBox"
+        Me.spacesCheckBox.UseVisualStyleBackColor = True
+        '
+        'symbolsCheckBox
+        '
+        resources.ApplyResources(Me.symbolsCheckBox, "symbolsCheckBox")
+        Me.symbolsCheckBox.Name = "symbolsCheckBox"
+        Me.symbolsCheckBox.UseVisualStyleBackColor = True
+        '
+        'numberCheckBox
+        '
+        resources.ApplyResources(Me.numberCheckBox, "numberCheckBox")
+        Me.numberCheckBox.Name = "numberCheckBox"
+        Me.numberCheckBox.UseVisualStyleBackColor = True
+        '
+        'upperCaseCheckBox
+        '
+        resources.ApplyResources(Me.upperCaseCheckBox, "upperCaseCheckBox")
+        Me.upperCaseCheckBox.Name = "upperCaseCheckBox"
+        Me.upperCaseCheckBox.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        resources.ApplyResources(Me.Label3, "Label3")
+        Me.Label3.Name = "Label3"
+        '
+        'lowerCaseCheckBox
+        '
+        resources.ApplyResources(Me.lowerCaseCheckBox, "lowerCaseCheckBox")
+        Me.lowerCaseCheckBox.Name = "lowerCaseCheckBox"
+        Me.lowerCaseCheckBox.UseVisualStyleBackColor = True
+        '
         'CustomCharsetForm
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.spacesCheckBox)
+        Me.Controls.Add(Me.symbolsCheckBox)
+        Me.Controls.Add(Me.numberCheckBox)
+        Me.Controls.Add(Me.upperCaseCheckBox)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.lowerCaseCheckBox)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.textBox)
         Me.Controls.Add(Me.Label1)
@@ -69,4 +116,10 @@ Partial Class CustomCharsetForm
     Friend WithEvents Label1 As Label
     Friend WithEvents textBox As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents spacesCheckBox As CheckBox
+    Friend WithEvents symbolsCheckBox As CheckBox
+    Friend WithEvents numberCheckBox As CheckBox
+    Friend WithEvents upperCaseCheckBox As CheckBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lowerCaseCheckBox As CheckBox
 End Class

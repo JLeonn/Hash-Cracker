@@ -27,6 +27,7 @@ Partial Class MainForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.targetButton = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.buildCharsetButton = New System.Windows.Forms.Button()
         Me.charsetLabel = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -39,12 +40,6 @@ Partial Class MainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.minimumTextBox = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.spacesCheckBox = New System.Windows.Forms.CheckBox()
-        Me.symbolsCheckBox = New System.Windows.Forms.CheckBox()
-        Me.numberCheckBox = New System.Windows.Forms.CheckBox()
-        Me.upperCaseCheckBox = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lowerCaseCheckBox = New System.Windows.Forms.CheckBox()
         Me.dictionaryRadioButton = New System.Windows.Forms.RadioButton()
         Me.bruteforceRadioButton = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -86,7 +81,6 @@ Partial Class MainForm
         Me.AttackMethodsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatisticsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContactToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CustomCharsetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -116,6 +110,7 @@ Partial Class MainForm
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.buildCharsetButton)
         Me.GroupBox1.Controls.Add(Me.charsetLabel)
         Me.GroupBox1.Controls.Add(Me.Label19)
         Me.GroupBox1.Controls.Add(Me.Label8)
@@ -128,12 +123,6 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.minimumTextBox)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.spacesCheckBox)
-        Me.GroupBox1.Controls.Add(Me.symbolsCheckBox)
-        Me.GroupBox1.Controls.Add(Me.numberCheckBox)
-        Me.GroupBox1.Controls.Add(Me.upperCaseCheckBox)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.lowerCaseCheckBox)
         Me.GroupBox1.Controls.Add(Me.dictionaryRadioButton)
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -141,17 +130,28 @@ Partial Class MainForm
         Me.GroupBox1.Location = New System.Drawing.Point(13, 143)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0, 15, 17, 15)
-        Me.GroupBox1.Size = New System.Drawing.Size(920, 398)
+        Me.GroupBox1.Size = New System.Drawing.Size(920, 300)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Attack Method"
+        '
+        'buildCharsetButton
+        '
+        Me.buildCharsetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.buildCharsetButton.Location = New System.Drawing.Point(239, 101)
+        Me.buildCharsetButton.Name = "buildCharsetButton"
+        Me.buildCharsetButton.Size = New System.Drawing.Size(101, 23)
+        Me.buildCharsetButton.TabIndex = 24
+        Me.buildCharsetButton.Text = "Build Charset"
+        Me.buildCharsetButton.UseVisualStyleBackColor = True
         '
         'charsetLabel
         '
         Me.charsetLabel.AutoSize = True
         Me.charsetLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.charsetLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.charsetLabel.Location = New System.Drawing.Point(83, 240)
+        Me.charsetLabel.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.charsetLabel.Location = New System.Drawing.Point(239, 127)
         Me.charsetLabel.Name = "charsetLabel"
         Me.charsetLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.charsetLabel.Size = New System.Drawing.Size(118, 28)
@@ -162,7 +162,7 @@ Partial Class MainForm
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(7, 240)
+        Me.Label19.Location = New System.Drawing.Point(236, 75)
         Me.Label19.Name = "Label19"
         Me.Label19.Padding = New System.Windows.Forms.Padding(5)
         Me.Label19.Size = New System.Drawing.Size(70, 26)
@@ -173,7 +173,7 @@ Partial Class MainForm
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(7, 357)
+        Me.Label8.Location = New System.Drawing.Point(9, 247)
         Me.Label8.Name = "Label8"
         Me.Label8.Padding = New System.Windows.Forms.Padding(5)
         Me.Label8.Size = New System.Drawing.Size(109, 26)
@@ -185,7 +185,7 @@ Partial Class MainForm
         Me.passwordListLabel.AutoSize = True
         Me.passwordListLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.passwordListLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.passwordListLabel.Location = New System.Drawing.Point(122, 355)
+        Me.passwordListLabel.Location = New System.Drawing.Point(124, 247)
         Me.passwordListLabel.Name = "passwordListLabel"
         Me.passwordListLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.passwordListLabel.Size = New System.Drawing.Size(184, 28)
@@ -195,7 +195,7 @@ Partial Class MainForm
         'passwordListButton
         '
         Me.passwordListButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.passwordListButton.Location = New System.Drawing.Point(160, 314)
+        Me.passwordListButton.Location = New System.Drawing.Point(155, 212)
         Me.passwordListButton.Name = "passwordListButton"
         Me.passwordListButton.Size = New System.Drawing.Size(75, 23)
         Me.passwordListButton.TabIndex = 19
@@ -206,7 +206,7 @@ Partial Class MainForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(7, 314)
+        Me.Label4.Location = New System.Drawing.Point(7, 209)
         Me.Label4.Name = "Label4"
         Me.Label4.Padding = New System.Windows.Forms.Padding(5)
         Me.Label4.Size = New System.Drawing.Size(147, 26)
@@ -217,7 +217,7 @@ Partial Class MainForm
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(3, 264)
+        Me.Label9.Location = New System.Drawing.Point(6, 159)
         Me.Label9.Name = "Label9"
         Me.Label9.Padding = New System.Windows.Forms.Padding(0, 15, 15, 15)
         Me.Label9.Size = New System.Drawing.Size(94, 50)
@@ -227,7 +227,7 @@ Partial Class MainForm
         'maximumTextBox
         '
         Me.maximumTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.maximumTextBox.Location = New System.Drawing.Point(259, 159)
+        Me.maximumTextBox.Location = New System.Drawing.Point(95, 134)
         Me.maximumTextBox.Name = "maximumTextBox"
         Me.maximumTextBox.Size = New System.Drawing.Size(100, 22)
         Me.maximumTextBox.TabIndex = 15
@@ -237,7 +237,7 @@ Partial Class MainForm
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(176, 159)
+        Me.Label7.Location = New System.Drawing.Point(12, 127)
         Me.Label7.Name = "Label7"
         Me.Label7.Padding = New System.Windows.Forms.Padding(5)
         Me.Label7.Size = New System.Drawing.Size(81, 26)
@@ -248,7 +248,7 @@ Partial Class MainForm
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(176, 113)
+        Me.Label6.Location = New System.Drawing.Point(12, 101)
         Me.Label6.Name = "Label6"
         Me.Label6.Padding = New System.Windows.Forms.Padding(5)
         Me.Label6.Size = New System.Drawing.Size(77, 26)
@@ -258,7 +258,7 @@ Partial Class MainForm
         'minimumTextBox
         '
         Me.minimumTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.minimumTextBox.Location = New System.Drawing.Point(259, 117)
+        Me.minimumTextBox.Location = New System.Drawing.Point(95, 105)
         Me.minimumTextBox.Name = "minimumTextBox"
         Me.minimumTextBox.Size = New System.Drawing.Size(100, 22)
         Me.minimumTextBox.TabIndex = 12
@@ -268,84 +268,18 @@ Partial Class MainForm
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(164, 84)
+        Me.Label5.Location = New System.Drawing.Point(7, 75)
         Me.Label5.Name = "Label5"
         Me.Label5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label5.Size = New System.Drawing.Size(127, 26)
+        Me.Label5.Size = New System.Drawing.Size(65, 26)
         Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Password Length: "
-        '
-        'spacesCheckBox
-        '
-        Me.spacesCheckBox.AutoSize = True
-        Me.spacesCheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.spacesCheckBox.Location = New System.Drawing.Point(16, 217)
-        Me.spacesCheckBox.Name = "spacesCheckBox"
-        Me.spacesCheckBox.Size = New System.Drawing.Size(74, 20)
-        Me.spacesCheckBox.TabIndex = 10
-        Me.spacesCheckBox.Text = "Spaces"
-        Me.spacesCheckBox.UseVisualStyleBackColor = True
-        '
-        'symbolsCheckBox
-        '
-        Me.symbolsCheckBox.AutoSize = True
-        Me.symbolsCheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.symbolsCheckBox.Location = New System.Drawing.Point(16, 191)
-        Me.symbolsCheckBox.Name = "symbolsCheckBox"
-        Me.symbolsCheckBox.Size = New System.Drawing.Size(80, 20)
-        Me.symbolsCheckBox.TabIndex = 9
-        Me.symbolsCheckBox.Text = "Symbols"
-        Me.symbolsCheckBox.UseVisualStyleBackColor = True
-        '
-        'numberCheckBox
-        '
-        Me.numberCheckBox.AutoSize = True
-        Me.numberCheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.numberCheckBox.Location = New System.Drawing.Point(16, 165)
-        Me.numberCheckBox.Name = "numberCheckBox"
-        Me.numberCheckBox.Size = New System.Drawing.Size(82, 20)
-        Me.numberCheckBox.TabIndex = 8
-        Me.numberCheckBox.Text = "Numbers"
-        Me.numberCheckBox.UseVisualStyleBackColor = True
-        '
-        'upperCaseCheckBox
-        '
-        Me.upperCaseCheckBox.AutoSize = True
-        Me.upperCaseCheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.upperCaseCheckBox.Location = New System.Drawing.Point(16, 139)
-        Me.upperCaseCheckBox.Name = "upperCaseCheckBox"
-        Me.upperCaseCheckBox.Size = New System.Drawing.Size(100, 20)
-        Me.upperCaseCheckBox.TabIndex = 7
-        Me.upperCaseCheckBox.Text = "Upper Case"
-        Me.upperCaseCheckBox.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(4, 84)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label1.Size = New System.Drawing.Size(77, 26)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Charsets: "
-        '
-        'lowerCaseCheckBox
-        '
-        Me.lowerCaseCheckBox.AutoSize = True
-        Me.lowerCaseCheckBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lowerCaseCheckBox.Location = New System.Drawing.Point(16, 113)
-        Me.lowerCaseCheckBox.Name = "lowerCaseCheckBox"
-        Me.lowerCaseCheckBox.Size = New System.Drawing.Size(98, 20)
-        Me.lowerCaseCheckBox.TabIndex = 5
-        Me.lowerCaseCheckBox.Text = "Lower Case"
-        Me.lowerCaseCheckBox.UseVisualStyleBackColor = True
+        Me.Label5.Text = "Range: "
         '
         'dictionaryRadioButton
         '
         Me.dictionaryRadioButton.AutoSize = True
         Me.dictionaryRadioButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dictionaryRadioButton.Location = New System.Drawing.Point(101, 287)
+        Me.dictionaryRadioButton.Location = New System.Drawing.Point(101, 179)
         Me.dictionaryRadioButton.Name = "dictionaryRadioButton"
         Me.dictionaryRadioButton.Size = New System.Drawing.Size(14, 13)
         Me.dictionaryRadioButton.TabIndex = 4
@@ -416,7 +350,7 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.statusLabel)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(13, 547)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 449)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(920, 197)
         Me.GroupBox2.TabIndex = 23
@@ -558,7 +492,7 @@ Partial Class MainForm
         'startButton
         '
         Me.startButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.Location = New System.Drawing.Point(12, 750)
+        Me.startButton.Location = New System.Drawing.Point(13, 652)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 24
@@ -616,7 +550,7 @@ Partial Class MainForm
         'stopButton
         '
         Me.stopButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stopButton.Location = New System.Drawing.Point(96, 750)
+        Me.stopButton.Location = New System.Drawing.Point(94, 652)
         Me.stopButton.Name = "stopButton"
         Me.stopButton.Size = New System.Drawing.Size(75, 23)
         Me.stopButton.TabIndex = 30
@@ -654,7 +588,7 @@ Partial Class MainForm
         Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip.Name = "menuStrip"
-        Me.menuStrip.Size = New System.Drawing.Size(960, 24)
+        Me.menuStrip.Size = New System.Drawing.Size(955, 24)
         Me.menuStrip.TabIndex = 32
         Me.menuStrip.Text = "MenuStrip1"
         '
@@ -673,7 +607,7 @@ Partial Class MainForm
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefaultsToolStripMenuItem, Me.CustomCharsetToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefaultsToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -681,7 +615,7 @@ Partial Class MainForm
         'DefaultsToolStripMenuItem
         '
         Me.DefaultsToolStripMenuItem.Name = "DefaultsToolStripMenuItem"
-        Me.DefaultsToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.DefaultsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DefaultsToolStripMenuItem.Text = "Options"
         '
         'HelpToolStripMenuItem
@@ -722,18 +656,12 @@ Partial Class MainForm
         Me.ContactToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
         Me.ContactToolStripMenuItem.Text = "Contact"
         '
-        'CustomCharsetToolStripMenuItem
-        '
-        Me.CustomCharsetToolStripMenuItem.Name = "CustomCharsetToolStripMenuItem"
-        Me.CustomCharsetToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
-        Me.CustomCharsetToolStripMenuItem.Text = "Custom Charset"
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(960, 803)
+        Me.ClientSize = New System.Drawing.Size(955, 687)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.stopButton)
         Me.Controls.Add(Me.startButton)
@@ -769,12 +697,6 @@ Partial Class MainForm
     Friend WithEvents Label6 As Label
     Friend WithEvents minimumTextBox As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents spacesCheckBox As CheckBox
-    Friend WithEvents symbolsCheckBox As CheckBox
-    Friend WithEvents numberCheckBox As CheckBox
-    Friend WithEvents upperCaseCheckBox As CheckBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents lowerCaseCheckBox As CheckBox
     Friend WithEvents passwordListButton As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents targetLabel As Label
@@ -819,5 +741,5 @@ Partial Class MainForm
     Friend WithEvents ContactToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents charsetLabel As Label
     Friend WithEvents Label19 As Label
-    Friend WithEvents CustomCharsetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents buildCharsetButton As Button
 End Class

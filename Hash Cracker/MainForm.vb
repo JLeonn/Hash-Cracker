@@ -66,24 +66,15 @@ Public Class MainForm
         setOptions(False, True)
     End Sub
 
-    Private Sub lowerCaseCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles lowerCaseCheckBox.CheckedChanged
-        updateCharset(lowerCaseCheckBox, LOWER_CASES)
-    End Sub
-
-    Private Sub upperCaseCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles upperCaseCheckBox.CheckedChanged
-        updateCharset(upperCaseCheckBox, UPPER_CASES)
-    End Sub
-
-    Private Sub numberCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles numberCheckBox.CheckedChanged
-        updateCharset(numberCheckBox, NUMBERS)
-    End Sub
-
-    Private Sub symbolsCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles symbolsCheckBox.CheckedChanged
-        updateCharset(symbolsCheckBox, SYMBOLS)
-    End Sub
-
-    Private Sub spacesCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles spacesCheckBox.CheckedChanged
-        updateCharset(spacesCheckBox, SPACES)
+    Private Sub buildCharsetButton_Click(sender As Object, e As EventArgs) Handles buildCharsetButton.Click
+        CustomCharsetForm.ShowDialog()
+        If CustomCharsetForm.Charset = String.Empty Then
+            charset = String.Empty
+            charsetLabel.Text = "No Built Charset."
+        Else
+            charset = CustomCharsetForm.Charset
+            charsetLabel.Text = CustomCharsetForm.Charset
+        End If
     End Sub
 
     Private Sub dictionaryRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles dictionaryRadioButton.CheckedChanged
@@ -204,27 +195,10 @@ Public Class MainForm
         passwordListLabel.Enabled = dictionaryOption
 
         ' Bruteforce options
-        lowerCaseCheckBox.Enabled = bruteForceOption
-        upperCaseCheckBox.Enabled = bruteForceOption
-        numberCheckBox.Enabled = bruteForceOption
-        symbolsCheckBox.Enabled = bruteForceOption
-        spacesCheckBox.Enabled = bruteForceOption
+        buildCharsetButton.Enabled = bruteForceOption
+        charsetLabel.Enabled = bruteForceOption
         minimumTextBox.Enabled = bruteForceOption
         maximumTextBox.Enabled = bruteForceOption
-    End Sub
-
-    Private Sub updateCharset(ByVal checkBox As CheckBox, subCharset As String)
-        If checkBox.Checked Then
-            charset += subCharset
-        Else
-            charset = charset.Replace(subCharset, "")
-        End If
-
-        If charset = String.Empty Then
-            charsetLabel.Text = "No Built Charset."
-        Else
-            charsetLabel.Text = charset
-        End If
     End Sub
 
     ' Thread safe function used to update Labels on a different thread.
@@ -246,11 +220,5 @@ Public Class MainForm
         End While
         updateLabel("Stopped", statusLabel)
         timer.Enabled = False
-    End Sub
-
-    Private Sub CustomCharsetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomCharsetToolStripMenuItem.Click
-        CustomCharsetForm.ShowDialog()
-        charset = CustomCharsetForm.Charset
-        charsetLabel.Text = CustomCharsetForm.Charset
     End Sub
 End Class
