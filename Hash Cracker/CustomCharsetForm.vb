@@ -59,9 +59,12 @@
     End Function
 
     ' Class Properties
-    Public ReadOnly Property Charset As String
+    Public Property Charset As String
         Get
             Return _charset
         End Get
+        Set(value As String)
+            _charset = value
+        End Set
     End Property
 End Class

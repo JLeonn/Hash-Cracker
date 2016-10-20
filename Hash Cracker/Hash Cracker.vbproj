@@ -74,6 +74,12 @@
   <ItemGroup>
     <Compile Include="AttackManager.vb" />
     <Compile Include="CharacterSets.vb" />
+    <Compile Include="ContactForm.Designer.vb">
+      <DependentUpon>ContactForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ContactForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CustomCharsetForm.Designer.vb">
       <DependentUpon>CustomCharsetForm.vb</DependentUpon>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="PathCompactor.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ContactForm.resx">
+      <DependentUpon>ContactForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomCharsetForm.resx">
       <DependentUpon>CustomCharsetForm.vb</DependentUpon>
     </EmbeddedResource>

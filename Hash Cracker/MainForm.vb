@@ -36,7 +36,7 @@ Public Class MainForm
     End Sub
 
     Private Sub ContactToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContactToolStripMenuItem.Click
-
+        ContactForm.ShowDialog()
     End Sub
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click

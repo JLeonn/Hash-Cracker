@@ -126,7 +126,6 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.dictionaryRadioButton)
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(13, 143)
         Me.GroupBox1.Name = "GroupBox1"
