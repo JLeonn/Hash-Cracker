@@ -65,6 +65,18 @@ Namespace My
                 Me("Charset") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property StoragePath() As String
+            Get
+                Return CType(Me("StoragePath"),String)
+            End Get
+            Set
+                Me("StoragePath") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

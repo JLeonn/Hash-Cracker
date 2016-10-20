@@ -34,6 +34,7 @@
         updateCharset(spacesCheckBox, SPACES)
     End Sub
 
+    ' Updates text box's charset deppending on which check boxes are checked.
     Private Sub updateCharset(ByVal checkBox As CheckBox, subCharset As String)
         If checkBox.Checked Then
             textBox.Text += subCharset
@@ -42,7 +43,8 @@
         End If
     End Sub
 
-    Private Function findDuplicate(ByVal charset As String)
+    ' Determines if there are duplicate characters in a given string
+    Private Function findDuplicate(ByVal charset As String) As Boolean
         Dim characters = charset.ToCharArray
         For i As Integer = 0 To characters.Count - 1
             For j As Integer = 0 To characters.Count - 1
@@ -56,6 +58,7 @@
         Return False
     End Function
 
+    ' Class Properties
     Public ReadOnly Property Charset As String
         Get
             Return _charset

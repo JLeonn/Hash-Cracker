@@ -31,6 +31,14 @@ Public Class MainForm
         Close()
     End Sub
 
+    Private Sub DefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DefaultsToolStripMenuItem.Click
+        OptionsForm.ShowDialog()
+    End Sub
+
+    Private Sub ContactToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContactToolStripMenuItem.Click
+
+    End Sub
+
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
         openTargetFileDialog.InitialDirectory = parentDirectory
         openTargetFileDialog.Filter = "Hash File (.hash)|*.hash"
