@@ -74,6 +74,12 @@
   <ItemGroup>
     <Compile Include="AttackManager.vb" />
     <Compile Include="CharacterSets.vb" />
+    <Compile Include="CustomCharsetForm.Designer.vb">
+      <DependentUpon>CustomCharsetForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCharsetForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HashCracking.vb" />
     <Compile Include="Hashing.vb" />
     <Compile Include="MainForm.Designer.vb">
@@ -97,9 +103,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="OptionsForm.Designer.vb">
+      <DependentUpon>OptionsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PathCompactor.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomCharsetForm.resx">
+      <DependentUpon>CustomCharsetForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +123,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsForm.resx">
+      <DependentUpon>OptionsForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

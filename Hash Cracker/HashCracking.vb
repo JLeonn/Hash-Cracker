@@ -21,10 +21,6 @@ Public Module HashCracking
         Private _maximum As Integer = 10
         Private _run As Boolean
 
-        Public Sub New()
-            ' Pass
-        End Sub
-
         Public Sub New(ByVal charset As String)
             Me.Charset = charset
             _length = charset.Length

@@ -9,6 +9,7 @@ Public Class MainForm
 
     Private attackManager As AttackManager
     Private attackMethod As String
+    Private charset As String
     Private compactor As PathCompactor
     Private elapsedTime As Integer
     Private passwordListPath As String
@@ -24,6 +25,10 @@ Public Class MainForm
         storageLabel.Text = compactor.compact()
         toolTip.SetToolTip(storageLabel, defaultStoragePath)
         storagePath = defaultStoragePath
+    End Sub
+
+    Private Sub closeFormMenuItem_Click(sender As Object, e As EventArgs) Handles closeFormMenuItem.Click
+        Close()
     End Sub
 
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
@@ -61,6 +66,26 @@ Public Class MainForm
         setOptions(False, True)
     End Sub
 
+    Private Sub lowerCaseCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles lowerCaseCheckBox.CheckedChanged
+        updateCharset(lowerCaseCheckBox, LOWER_CASES)
+    End Sub
+
+    Private Sub upperCaseCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles upperCaseCheckBox.CheckedChanged
+        updateCharset(upperCaseCheckBox, UPPER_CASES)
+    End Sub
+
+    Private Sub numberCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles numberCheckBox.CheckedChanged
+        updateCharset(numberCheckBox, NUMBERS)
+    End Sub
+
+    Private Sub symbolsCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles symbolsCheckBox.CheckedChanged
+        updateCharset(symbolsCheckBox, SYMBOLS)
+    End Sub
+
+    Private Sub spacesCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles spacesCheckBox.CheckedChanged
+        updateCharset(spacesCheckBox, SPACES)
+    End Sub
+
     Private Sub dictionaryRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles dictionaryRadioButton.CheckedChanged
         setOptions(True, False)
     End Sub
@@ -93,10 +118,8 @@ Public Class MainForm
         attackManager = New AttackManager(targetPath, storagePath)
         Select Case attackMethod
             Case "bruteforce"
-                Dim charset = buildCharset()
-
                 '  Checks information needed to commence a bruteforce attack.
-                If charset = "" Then
+                If charset = String.Empty Then
                     MessageBox.Show("No Charset Was Given.")
                     Exit Sub
                 End If
@@ -167,34 +190,6 @@ Public Class MainForm
     End Sub
 
     ' Non Handlers
-    ' Builds charset that will be used to bruteforce a hash.
-    Private Function buildCharset() As String
-        Dim builder As New StringBuilder
-
-        If lowerCaseCheckBox.Checked Then
-            builder.Append(LOWER_CASES)
-        End If
-
-        If upperCaseCheckBox.Checked Then
-            builder.Append(UPPER_CASES)
-        End If
-
-        If numberCheckBox.Checked Then
-            builder.Append(NUMBERS)
-        End If
-
-        If symbolsCheckBox.Checked Then
-            builder.Append(SYMBOLS)
-        End If
-
-        If spacesCheckBox.Checked Then
-            builder.Append(SPACES)
-        End If
-
-        Return builder.ToString()
-    End Function
-
-
     ' Flips the attack option between the bruteforce and dictionary attack.
     Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
         ' Sets the attak accordingly
@@ -218,6 +213,20 @@ Public Class MainForm
         maximumTextBox.Enabled = bruteForceOption
     End Sub
 
+    Private Sub updateCharset(ByVal checkBox As CheckBox, subCharset As String)
+        If checkBox.Checked Then
+            charset += subCharset
+        Else
+            charset = charset.Replace(subCharset, "")
+        End If
+
+        If charset = String.Empty Then
+            charsetLabel.Text = "No Built Charset."
+        Else
+            charsetLabel.Text = charset
+        End If
+    End Sub
+
     ' Thread safe function used to update Labels on a different thread.
     ' Used in conjunction with 'updateStats'
     Private Sub updateLabel(ByVal [text] As String, label As Label)
@@ -237,5 +246,11 @@ Public Class MainForm
         End While
         updateLabel("Stopped", statusLabel)
         timer.Enabled = False
+    End Sub
+
+    Private Sub CustomCharsetToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomCharsetToolStripMenuItem.Click
+        CustomCharsetForm.ShowDialog()
+        charset = CustomCharsetForm.Charset
+        charsetLabel.Text = CustomCharsetForm.Charset
     End Sub
 End Class

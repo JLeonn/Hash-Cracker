@@ -7,6 +7,8 @@ Public Class PathCompactor
         _path = path
     End Sub
 
+    ' Compresses a paths directories down to 4 directories by default or a chosen ammount.
+    ' Length is the number of directories shown before the compression and current directory.
     Public Function compact(Optional length As Integer = 2) As String
         Dim builder As New StringBuilder
         Dim dir = Split(_path, "\")
@@ -25,6 +27,7 @@ Public Class PathCompactor
     End Function
 
     ' Class Properties
+    ' The path that will be supressed.
     Public Property Path
         Get
             Return _path
