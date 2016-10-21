@@ -57,12 +57,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Charset() As String
+        Public Property TargetPath() As String
             Get
-                Return CType(Me("Charset"),String)
+                Return CType(Me("TargetPath"),String)
             End Get
             Set
-                Me("Charset") = value
+                Me("TargetPath") = value
             End Set
         End Property
         
@@ -75,6 +75,30 @@ Namespace My
             End Get
             Set
                 Me("StoragePath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Charset() As String
+            Get
+                Return CType(Me("Charset"),String)
+            End Get
+            Set
+                Me("Charset") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PasswordPath() As String
+            Get
+                Return CType(Me("PasswordPath"),String)
+            End Get
+            Set
+                Me("PasswordPath") = value
             End Set
         End Property
     End Class

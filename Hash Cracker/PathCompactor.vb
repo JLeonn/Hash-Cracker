@@ -1,20 +1,15 @@
 ﻿Imports System.Text
 
-Public Class PathCompactor
-    Private _path As String
-
-    Public Sub New(ByVal path As String)
-        _path = path
-    End Sub
-
+' Contains tools for compacting strings down.
+Public Class Compact
     ' Compresses a paths directories down to 4 directories by default or a chosen ammount.
     ' Length is the number of directories shown before the compression and current directory.
-    Public Function compact(Optional length As Integer = 2) As String
+    Public Shared Function compactPath(ByVal path As String, Optional length As Integer = 2) As String
         Dim builder As New StringBuilder
-        Dim dir = Split(_path, "\")
+        Dim dir = Split(path, "\")
 
         If dir.Count <= length Then
-            Return _path
+            Return path
         End If
 
         For index As Integer = 0 To length
@@ -25,15 +20,4 @@ Public Class PathCompactor
 
         Return builder.ToString
     End Function
-
-    ' Class Properties
-    ' The path that will be supressed.
-    Public Property Path
-        Get
-            Return _path
-        End Get
-        Set(value)
-            _path = value
-        End Set
-    End Property
 End Class

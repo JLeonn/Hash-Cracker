@@ -10,7 +10,6 @@ Public Class MainForm
     Private attackManager As AttackManager
     Private attackMethod As String
     Private charset As String
-    Private compactor As PathCompactor
     Private elapsedTime As Integer
     Private passwordListPath As String
     Private statThread As Thread
@@ -21,10 +20,8 @@ Public Class MainForm
     Private Delegate Sub SetTextCallBack([text] As String, label As Label)
 
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        compactor = New PathCompactor(defaultStoragePath)
-        storageLabel.Text = compactor.compact()
-        toolTip.SetToolTip(storageLabel, defaultStoragePath)
-        storagePath = defaultStoragePath
+        loadSettings()
+        displaySettings()
     End Sub
 
     Private Sub closeFormMenuItem_Click(sender As Object, e As EventArgs) Handles closeFormMenuItem.Click
@@ -33,20 +30,20 @@ Public Class MainForm
 
     Private Sub DefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DefaultsToolStripMenuItem.Click
         OptionsForm.ShowDialog()
+        If OptionsForm.SavedChanges Then
+            loadSettings()
+            displaySettings()
+        End If
     End Sub
 
-    Private Sub ContactToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContactToolStripMenuItem.Click
-        ContactForm.ShowDialog()
-    End Sub
-
+    ' Seperate from application settings.
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
         openTargetFileDialog.InitialDirectory = parentDirectory
         openTargetFileDialog.Filter = "Hash File (.hash)|*.hash"
         openTargetFileDialog.ShowDialog()
 
         If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
-            compactor.Path = openTargetFileDialog.FileName
-            targetLabel.Text = compactor.compact()
+            targetLabel.Text = Compact.compactPath(openTargetFileDialog.FileName)
             toolTip.SetToolTip(targetLabel, openTargetFileDialog.FileName)
             targetPath = openTargetFileDialog.FileName
         Else
@@ -54,19 +51,18 @@ Public Class MainForm
         End If
     End Sub
 
+    ' Seperate from application settings.
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click
         openStorageFileDialog.InitialDirectory = parentDirectory
         openStorageFileDialog.Filter = "Text File (.txt)|*.txt"
         openStorageFileDialog.ShowDialog()
 
         If File.Exists(openStorageFileDialog.FileName) Then
-            compactor.Path = openStorageFileDialog.FileName
-            storageLabel.Text = compactor.compact()
+            storageLabel.Text = Compact.compactPath(openStorageFileDialog.FileName)
             toolTip.SetToolTip(storageLabel, openStorageFileDialog.FileName)
             storagePath = openStorageFileDialog.FileName
         Else
             storageLabel.Text = "No Storage Path Selected."
-            storagePath = defaultStoragePath
         End If
     End Sub
 
@@ -74,6 +70,7 @@ Public Class MainForm
         setOptions(False, True)
     End Sub
 
+    ' Seperate from application settings
     Private Sub buildCharsetButton_Click(sender As Object, e As EventArgs) Handles buildCharsetButton.Click
         CustomCharsetForm.ShowDialog()
         If CustomCharsetForm.Charset = String.Empty Then
@@ -89,14 +86,14 @@ Public Class MainForm
         setOptions(True, False)
     End Sub
 
+    ' Seperate from application settings.
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
         openPasswordFileDialog.InitialDirectory = parentDirectory
         openPasswordFileDialog.Filter = "Text File (.txt)|*.txt"
         openPasswordFileDialog.ShowDialog()
 
         If File.Exists(openPasswordFileDialog.FileName) Then
-            compactor.Path = openPasswordFileDialog.FileName
-            passwordListLabel.Text = compactor.compact()
+            passwordListLabel.Text = Compact.compactPath(openPasswordFileDialog.FileName)
             toolTip.SetToolTip(passwordListLabel, openPasswordFileDialog.FileName)
             passwordListPath = openPasswordFileDialog.FileName
         Else
@@ -104,6 +101,7 @@ Public Class MainForm
         End If
     End Sub
 
+    ' Initiates the cracking process.
     Private Sub startButton_Click(sender As Object, e As EventArgs) Handles startButton.Click
         If statusLabel.Text = "Running" Then
             Exit Sub
@@ -188,7 +186,31 @@ Public Class MainForm
         attemptsPerSecondLabel.Text = Math.Round(currentAttemptsLabel.Text / elapsedTime, 2).ToString("N2")
     End Sub
 
+
     ' Non Handlers
+    ' Displays the currently selected settings on the main form.
+    Private Sub displaySettings()
+        If File.Exists(My.Settings.TargetPath) Then
+            targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
+            toolTip.SetToolTip(targetLabel, My.Settings.TargetPath)
+        Else
+            targetLabel.Text = "No Target Path Selected."
+        End If
+
+        If File.Exists(My.Settings.StoragePath) Then
+            storageLabel.Text = Compact.compactPath(My.Settings.StoragePath)
+            toolTip.SetToolTip(storageLabel, My.Settings.StoragePath)
+        Else
+            storageLabel.Text = "No Storage Path Selected."
+        End If
+
+        If My.Settings.Charset = String.Empty Then
+            charsetLabel.Text = "No Charset Built."
+        Else
+            charsetLabel.Text = My.Settings.Charset
+        End If
+    End Sub
+
     ' Flips the attack option between the bruteforce and dictionary attack.
     Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
         ' Sets the attak accordingly
@@ -207,6 +229,13 @@ Public Class MainForm
         charsetLabel.Enabled = bruteForceOption
         minimumTextBox.Enabled = bruteForceOption
         maximumTextBox.Enabled = bruteForceOption
+    End Sub
+
+    ' Loads all application settings into memory for application use.
+    Private Sub loadSettings()
+        targetPath = My.Settings.TargetPath
+        storagePath = My.Settings.StoragePath
+        charset = My.Settings.Charset
     End Sub
 
     ' Thread safe function used to update Labels on a different thread.

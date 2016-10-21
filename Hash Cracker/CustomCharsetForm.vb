@@ -4,14 +4,13 @@
     Private Sub setCharsetButton_Click(sender As Object, e As EventArgs) Handles setCharsetButton.Click
         If findDuplicate(textBox.Text) Then
             Dim result = MsgBox("Duplicates In Charset. Continue?", MsgBoxStyle.YesNo, "Duplicates Detected")
-            If result = MsgBoxResult.Yes Then
-                _charset = textBox.Text
-                Close()
+            If result <> MsgBoxResult.Yes Then
+                Exit Sub
             End If
-        Else
-            _charset = textBox.Text
-            Close()
         End If
+
+        _charset = textBox.Text
+        Close()
     End Sub
 
     Private Sub lowerCaseCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles lowerCaseCheckBox.CheckedChanged

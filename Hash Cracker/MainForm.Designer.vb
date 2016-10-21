@@ -73,6 +73,7 @@ Partial Class MainForm
         Me.menuStrip = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.closeFormMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DefaultsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -80,7 +81,6 @@ Partial Class MainForm
         Me.FileSelectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AttackMethodsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatisticsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContactToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -588,13 +588,13 @@ Partial Class MainForm
         Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.menuStrip.Location = New System.Drawing.Point(0, 0)
         Me.menuStrip.Name = "menuStrip"
-        Me.menuStrip.Size = New System.Drawing.Size(955, 24)
+        Me.menuStrip.Size = New System.Drawing.Size(947, 24)
         Me.menuStrip.TabIndex = 32
         Me.menuStrip.Text = "MenuStrip1"
         '
         'ToolStripMenuItem1
         '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.closeFormMenuItem})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.closeFormMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.ToolStripMenuItem1.Text = "File"
@@ -602,8 +602,14 @@ Partial Class MainForm
         'closeFormMenuItem
         '
         Me.closeFormMenuItem.Name = "closeFormMenuItem"
-        Me.closeFormMenuItem.Size = New System.Drawing.Size(92, 22)
+        Me.closeFormMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.closeFormMenuItem.Text = "Exit"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem3.Text = "Create .Hash"
         '
         'SettingsToolStripMenuItem
         '
@@ -615,12 +621,12 @@ Partial Class MainForm
         'DefaultsToolStripMenuItem
         '
         Me.DefaultsToolStripMenuItem.Name = "DefaultsToolStripMenuItem"
-        Me.DefaultsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DefaultsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.DefaultsToolStripMenuItem.Text = "Options"
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ContactToolStripMenuItem})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
@@ -629,7 +635,7 @@ Partial Class MainForm
         '
         Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileSelectionToolStripMenuItem, Me.AttackMethodsToolStripMenuItem, Me.StatisticsToolStripMenuItem})
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(123, 22)
         Me.ToolStripMenuItem2.Text = "Manual..."
         '
         'FileSelectionToolStripMenuItem
@@ -650,18 +656,12 @@ Partial Class MainForm
         Me.StatisticsToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
         Me.StatisticsToolStripMenuItem.Text = "Statistics"
         '
-        'ContactToolStripMenuItem
-        '
-        Me.ContactToolStripMenuItem.Name = "ContactToolStripMenuItem"
-        Me.ContactToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ContactToolStripMenuItem.Text = "Contact"
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(955, 687)
+        Me.ClientSize = New System.Drawing.Size(947, 687)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.stopButton)
         Me.Controls.Add(Me.startButton)
@@ -738,8 +738,8 @@ Partial Class MainForm
     Friend WithEvents AttackMethodsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatisticsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DefaultsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ContactToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents charsetLabel As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents buildCharsetButton As Button
+    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
 End Class
