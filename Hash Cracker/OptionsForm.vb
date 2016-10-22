@@ -15,7 +15,7 @@ Public Class OptionsForm
 
     Private Sub OptionForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _savedChanges = False
-        displaySettings()
+        loadSettings()
     End Sub
 
     Private Sub buildCharsetButton_Click(sender As Object, e As EventArgs) Handles buildCharsetButton.Click
@@ -30,40 +30,45 @@ Public Class OptionsForm
     End Sub
 
     ' Displays the currently selected settings on the main form.
-    Private Sub displaySettings()
-        ' TargetPath
+    ' Loads settings into memory.
+    Private Sub loadSettings()
         If File.Exists(My.Settings.TargetPath) Then
             targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
             toolTip.SetToolTip(targetLabel, My.Settings.TargetPath)
+            targetPath = My.Settings.TargetPath
         Else
-            targetLabel.Text = "No Deafult Target Path Selected."
+            targetLabel.Text = "No Default Target Path Selected."
         End If
 
-        ' StoragePath
         If File.Exists(My.Settings.StoragePath) Then
             storageLabel.Text = Compact.compactPath(My.Settings.StoragePath)
             toolTip.SetToolTip(storageLabel, My.Settings.StoragePath)
+            storagePath = My.Settings.StoragePath
         Else
-            storageLabel.Text = "No Deafult Storage Path Selected."
+            storageLabel.Text = "No Default Storage Path Selected."
         End If
 
-        ' Charset
         If My.Settings.Charset <> String.Empty Then
             charsetLabel.Text = My.Settings.Charset
+            charset = My.Settings.Charset
         Else
-            charsetLabel.Text = "No Deafult Charset Built."
+            charset = String.Empty
+            charsetLabel.Text = "No Default Charset Built."
         End If
 
-        ' PasswordPath
         If File.Exists(My.Settings.PasswordPath) Then
             passwordListLabel.Text = Compact.compactPath(My.Settings.PasswordPath)
             toolTip.SetToolTip(passwordListLabel, My.Settings.PasswordPath)
+            passwordListPath = My.Settings.PasswordPath
         Else
-            passwordListLabel.Text = "No Deafult Password List Path Selected."
+            passwordListLabel.Text = "No Default Password List Path Selected."
         End If
 
-        minimumTextBox.Text = My.Settings.BruteForceMin
         maximumTextBox.Text = My.Settings.BruteForceMax
+        maximum = My.Settings.BruteForceMax
+
+        minimumTextBox.Text = My.Settings.BruteForceMin
+        minimum = My.Settings.BruteForceMin
     End Sub
 
     Private Sub clearButton_Click(sender As Object, e As EventArgs) Handles clearButton.Click
@@ -86,7 +91,7 @@ Public Class OptionsForm
 
     ' Checks whether the changed text is valid.
     Private Sub maximumTextBox_TextChanged(sender As Object, e As EventArgs) Handles maximumTextBox.Leave
-        If Not (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text > minimumTextBox.Text) Then
+        If Not (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text) Then
             MessageBox.Show("Invalid Maximum")
             maximumTextBox.Text = My.Settings.BruteForceMax
             Exit Sub
@@ -97,13 +102,13 @@ Public Class OptionsForm
 
     ' Checks whether the changed text is valid.
     Private Sub minimumTextBox_TextChanged(sender As Object, e As EventArgs) Handles minimumTextBox.Leave
-        If Not (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text < maximumTextBox.Text) Then
+        If Not (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text) Then
             MessageBox.Show("Invalid Minimum")
             minimumTextBox.Text = My.Settings.BruteForceMin
             Exit Sub
         End If
 
-        minimum = maximumTextBox.Text
+        minimum = minimumTextBox.Text
     End Sub
 
     ' Saves all option settings to application settings.
@@ -144,6 +149,7 @@ Public Class OptionsForm
 
         My.Settings.BruteForceMin = minimumTextBox.Text
         My.Settings.BruteForceMax = maximumTextBox.Text
+        My.Settings.Save()
     End Sub
 
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click

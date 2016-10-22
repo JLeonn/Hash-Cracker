@@ -15,27 +15,24 @@ Public Module HashCracking
     ' Contains tools used to perform brute force attacks on password hashes.
     Public Class BruteForce : Implements Attacker
         Private _attempts As Integer
-        Private _charset As String = ALL_CHARACTERS
-        Private _length As Integer = Charset.Length()
-        Private _minimum As Integer = 1
-        Private _maximum As Integer = 10
+        Private _charset As String
+        Private _minimum As Integer
+        Private _maximum As Integer
         Private _run As Boolean
 
         Public Sub New(ByVal charset As String)
-            Me.Charset = charset
-            _length = charset.Length
+            _charset = charset
         End Sub
 
         Public Sub New(ByVal minimum As Integer, maximum As Integer)
-            Me.Minimum = minimum
-            Me.Maximum = maximum
+            _minimum = minimum
+            _maximum = maximum
         End Sub
 
         Public Sub New(ByVal charset As String, minimum As Integer, maximum As Integer)
-            Me.Charset = charset
-            _length = charset.Length()
-            Me.Minimum = minimum
-            Me.Maximum = maximum
+            _charset = charset
+            _minimum = minimum
+            _maximum = maximum
         End Sub
 
         ' Starts the bruteforce cracking process.
@@ -43,8 +40,8 @@ Public Module HashCracking
         Public Function attack(ByVal hash As Hash) As String Implements Attacker.attack
             _attempts = 0
             _run = True
-            Dim passwords As IEnumerable(Of String) = generatePasswords(Minimum, Maximum)
-            For Each password As String In passwords
+            Dim passwords As IEnumerable(Of String) = generatePasswords(_minimum, _maximum)
+            For Each password In passwords
                 _attempts += 1
                 Dim bytes As Byte() = Encoding.UTF8.GetBytes(password & hash.Salt)
                 Dim hashBytes As Byte() = hash.Type.ComputeHash(bytes)
@@ -58,12 +55,12 @@ Public Module HashCracking
         End Function
 
         ' Calculates the number of possible combinations and starts generating all of them.
-        Public Iterator Function generatePasswords(ByVal min As Integer, maximum As Integer) As IEnumerable(Of String)
-            For _minimum = min To maximum
+        Public Iterator Function generatePasswords(ByVal min As Integer, max As Integer) As IEnumerable(Of String)
+            For _minimum = min To max
                 Dim total As Long = Math.Pow(Charset.Length, _minimum)
                 Dim counter As Long = 0
                 While counter < total
-                    Yield factoradic(counter, Minimum - 1)
+                    Yield factoradic(counter, _minimum - 1)
                     counter += 1
                 End While
             Next
@@ -73,8 +70,8 @@ Public Module HashCracking
         Private Function factoradic(ByVal l As Long, power As Double) As String
             Dim sb As New StringBuilder
             While power >= 0
-                sb = sb.Append(Charset((l Mod _length)))
-                l /= _length
+                sb = sb.Append(Charset((l Mod _charset.Length)))
+                l /= _charset.Length
                 power -= 1
             End While
             Return sb.ToString
@@ -95,7 +92,6 @@ Public Module HashCracking
             End Get
             Set(value As String)
                 _charset = value
-                _length = value.Length
             End Set
         End Property
 

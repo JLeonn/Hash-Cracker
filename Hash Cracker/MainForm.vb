@@ -50,6 +50,7 @@ Public Class MainForm
     End Sub
 
     ' Displays the currently selected settings on the main form.
+    ' Loads settings into memory.
     Private Sub loadSettings()
         If File.Exists(My.Settings.TargetPath) Then
             targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
@@ -92,22 +93,24 @@ Public Class MainForm
 
     ' Checks whether the changed text is valid.
     Private Sub maximumTextBox_TextChanged(sender As Object, e As EventArgs) Handles maximumTextBox.Leave
-        If (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text) Then
-            My.Settings.BruteForceMax = maximumTextBox.Text
-        Else
+        If Not (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text) Then
             MessageBox.Show("Invalid Maximum")
             maximumTextBox.Text = My.Settings.BruteForceMax
+            Exit Sub
         End If
+
+        maximum = maximumTextBox.Text
     End Sub
 
     ' Checks whether the changed text is valid.
     Private Sub minimumTextBox_TextChanged(sender As Object, e As EventArgs) Handles minimumTextBox.Leave
-        If (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text) Then
-            My.Settings.BruteForceMin = minimumTextBox.Text
-        Else
+        If Not (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text) Then
             MessageBox.Show("Invalid Minimum")
             minimumTextBox.Text = My.Settings.BruteForceMin
+            Exit Sub
         End If
+
+        minimum = minimumTextBox.Text
     End Sub
 
     ' Loads option form and updates any setting changes to main form.
@@ -165,8 +168,6 @@ Public Class MainForm
             Exit Sub
         End If
 
-        Console.WriteLine(charset)
-
         If storagePath = Nothing Then
             MessageBox.Show("No Storage Path Selected.")
             Exit Sub
@@ -182,7 +183,7 @@ Public Class MainForm
                 End If
 
                 ' Attacks the given hash file while still giving the user usability of the interface.
-                Dim attacker As New BruteForce(charset, minimumTextBox.Text, maximumTextBox.Text)
+                Dim attacker As New BruteForce(charset, minimum, maximum)
                 attackManager.Attacker = attacker
                 totalPossibleLabel.Enabled = True
                 totalPossibleLabel.Text = attacker.TotalCombinations.ToString("N0")

@@ -34,14 +34,14 @@ Public Class AttackManager
             If _run Then
                 Dim password = Attacker.attack(hash)
                 If password Is Nothing Then
-                    result = String.Format("Hash: {0}, Salt: {1}, Status: Uncracked", hash.Hash, hash.Salt)
+                    result = String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt)
                 Else
                     _hashesCracked += 1
-                    result = String.Format("Password: {0}, Status: Cracked", password)
+                    result = String.Format("Status: Cracked, Password: {0}", password)
                 End If
                 _writer.WriteLine(result)
             Else
-                result = String.Format("Hash: {0}, Salt: {1}, Status: Uncracked", hash.Hash, hash.Salt)
+                result = String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt)
                 _writer.WriteLine(result)
             End If
         Next
