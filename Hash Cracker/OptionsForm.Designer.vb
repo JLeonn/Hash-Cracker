@@ -49,6 +49,10 @@ Partial Class OptionsForm
         Me.openStorageFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.openPasswordFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.optionDefaultTextBox = New System.Windows.Forms.GroupBox()
+        Me.maximumTextBox = New System.Windows.Forms.TextBox()
+        Me.minimumTextBox = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.defaultPathGroupBox.SuspendLayout()
         Me.optionDefaultTextBox.SuspendLayout()
         Me.SuspendLayout()
@@ -281,6 +285,10 @@ Partial Class OptionsForm
         '
         'optionDefaultTextBox
         '
+        Me.optionDefaultTextBox.Controls.Add(Me.maximumTextBox)
+        Me.optionDefaultTextBox.Controls.Add(Me.minimumTextBox)
+        Me.optionDefaultTextBox.Controls.Add(Me.Label7)
+        Me.optionDefaultTextBox.Controls.Add(Me.Label2)
         Me.optionDefaultTextBox.Controls.Add(Me.Label1)
         Me.optionDefaultTextBox.Controls.Add(Me.charsetLabel)
         Me.optionDefaultTextBox.Controls.Add(Me.buildCharsetButton)
@@ -292,6 +300,48 @@ Partial Class OptionsForm
         Me.optionDefaultTextBox.TabIndex = 4
         Me.optionDefaultTextBox.TabStop = False
         Me.optionDefaultTextBox.Text = "Option Defaults"
+        '
+        'maximumTextBox
+        '
+        Me.maximumTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.maximumTextBox.Location = New System.Drawing.Point(150, 142)
+        Me.maximumTextBox.Name = "maximumTextBox"
+        Me.maximumTextBox.Size = New System.Drawing.Size(28, 22)
+        Me.maximumTextBox.TabIndex = 45
+        Me.maximumTextBox.Text = "8"
+        Me.maximumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'minimumTextBox
+        '
+        Me.minimumTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.minimumTextBox.Location = New System.Drawing.Point(150, 107)
+        Me.minimumTextBox.Name = "minimumTextBox"
+        Me.minimumTextBox.Size = New System.Drawing.Size(28, 22)
+        Me.minimumTextBox.TabIndex = 44
+        Me.minimumTextBox.Text = "1"
+        Me.minimumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(6, 136)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Padding = New System.Windows.Forms.Padding(5)
+        Me.Label7.Size = New System.Drawing.Size(138, 26)
+        Me.Label7.TabIndex = 43
+        Me.Label7.Text = "Brute Force Max: "
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 103)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Padding = New System.Windows.Forms.Padding(5)
+        Me.Label2.Size = New System.Drawing.Size(134, 26)
+        Me.Label2.TabIndex = 42
+        Me.Label2.Text = "Brute Force Min: "
         '
         'OptionsForm
         '
@@ -339,4 +389,8 @@ Partial Class OptionsForm
     Friend WithEvents Label6 As Label
     Friend WithEvents openPasswordFileDialog As OpenFileDialog
     Friend WithEvents optionDefaultTextBox As GroupBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents maximumTextBox As TextBox
+    Friend WithEvents minimumTextBox As TextBox
 End Class

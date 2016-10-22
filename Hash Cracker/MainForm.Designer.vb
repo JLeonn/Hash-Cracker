@@ -72,10 +72,10 @@ Partial Class MainForm
         Me.toolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.menuStrip = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.closeFormMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.closeFormMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DefaultsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.optionsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSelectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -138,7 +138,7 @@ Partial Class MainForm
         'buildCharsetButton
         '
         Me.buildCharsetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.buildCharsetButton.Location = New System.Drawing.Point(239, 101)
+        Me.buildCharsetButton.Location = New System.Drawing.Point(172, 101)
         Me.buildCharsetButton.Name = "buildCharsetButton"
         Me.buildCharsetButton.Size = New System.Drawing.Size(101, 23)
         Me.buildCharsetButton.TabIndex = 24
@@ -151,7 +151,7 @@ Partial Class MainForm
         Me.charsetLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.charsetLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.charsetLabel.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.charsetLabel.Location = New System.Drawing.Point(239, 127)
+        Me.charsetLabel.Location = New System.Drawing.Point(172, 134)
         Me.charsetLabel.Name = "charsetLabel"
         Me.charsetLabel.Padding = New System.Windows.Forms.Padding(5)
         Me.charsetLabel.Size = New System.Drawing.Size(118, 28)
@@ -162,7 +162,7 @@ Partial Class MainForm
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(236, 75)
+        Me.Label19.Location = New System.Drawing.Point(160, 75)
         Me.Label19.Name = "Label19"
         Me.Label19.Padding = New System.Windows.Forms.Padding(5)
         Me.Label19.Size = New System.Drawing.Size(70, 26)
@@ -229,7 +229,7 @@ Partial Class MainForm
         Me.maximumTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.maximumTextBox.Location = New System.Drawing.Point(95, 134)
         Me.maximumTextBox.Name = "maximumTextBox"
-        Me.maximumTextBox.Size = New System.Drawing.Size(100, 22)
+        Me.maximumTextBox.Size = New System.Drawing.Size(28, 22)
         Me.maximumTextBox.TabIndex = 15
         Me.maximumTextBox.Text = "8"
         '
@@ -260,7 +260,7 @@ Partial Class MainForm
         Me.minimumTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.minimumTextBox.Location = New System.Drawing.Point(95, 105)
         Me.minimumTextBox.Name = "minimumTextBox"
-        Me.minimumTextBox.Size = New System.Drawing.Size(100, 22)
+        Me.minimumTextBox.Size = New System.Drawing.Size(28, 22)
         Me.minimumTextBox.TabIndex = 12
         Me.minimumTextBox.Text = "1"
         '
@@ -599,30 +599,30 @@ Partial Class MainForm
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.ToolStripMenuItem1.Text = "File"
         '
-        'closeFormMenuItem
-        '
-        Me.closeFormMenuItem.Name = "closeFormMenuItem"
-        Me.closeFormMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.closeFormMenuItem.Text = "Exit"
-        '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(141, 22)
         Me.ToolStripMenuItem3.Text = "Create .Hash"
+        '
+        'closeFormMenuItem
+        '
+        Me.closeFormMenuItem.Name = "closeFormMenuItem"
+        Me.closeFormMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.closeFormMenuItem.Text = "Exit"
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DefaultsToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.optionsMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
-        'DefaultsToolStripMenuItem
+        'optionsMenuItem
         '
-        Me.DefaultsToolStripMenuItem.Name = "DefaultsToolStripMenuItem"
-        Me.DefaultsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
-        Me.DefaultsToolStripMenuItem.Text = "Options"
+        Me.optionsMenuItem.Name = "optionsMenuItem"
+        Me.optionsMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.optionsMenuItem.Text = "Options"
         '
         'HelpToolStripMenuItem
         '
@@ -737,7 +737,7 @@ Partial Class MainForm
     Friend WithEvents FileSelectionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AttackMethodsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatisticsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DefaultsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents optionsMenuItem As ToolStripMenuItem
     Friend WithEvents charsetLabel As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents buildCharsetButton As Button

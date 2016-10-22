@@ -101,6 +101,30 @@ Namespace My
                 Me("PasswordPath") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property BruteForceMin() As Integer
+            Get
+                Return CType(Me("BruteForceMin"),Integer)
+            End Get
+            Set
+                Me("BruteForceMin") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("8")>  _
+        Public Property BruteForceMax() As Integer
+            Get
+                Return CType(Me("BruteForceMax"),Integer)
+            End Get
+            Set
+                Me("BruteForceMax") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

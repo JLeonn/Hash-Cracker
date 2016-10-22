@@ -3,7 +3,6 @@
 
 Public Class OptionsForm
     Private parentDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-    Private defaultStoragePath = parentDirectory & "\Crack Session.txt"
 
     Private _savedChanges As Boolean
 
@@ -55,19 +54,47 @@ Public Class OptionsForm
         Else
             passwordListLabel.Text = "No Deafult Password List Path Selected."
         End If
+
+        minimumTextBox.Text = My.Settings.BruteForceMin
+        maximumTextBox.Text = My.Settings.BruteForceMax
     End Sub
 
     Private Sub clearButton_Click(sender As Object, e As EventArgs) Handles clearButton.Click
-        My.Settings.TargetPath = String.Empty
-        My.Settings.StoragePath = String.Empty
-        My.Settings.Charset = String.Empty
-        My.Settings.PasswordPath = String.Empty
-        displaySettings()
+        targetLabel.Text = "No Deafult Target Path Selected."
+        storageLabel.Text = "No Deafult Storage Path Selected."
+        charsetLabel.Text = "No Deafult Charset Built."
+        passwordListLabel.Text = "No Deafult Password List Path Selected."
+        minimumTextBox.Text = 1
+        maximumTextBox.Text = 8
     End Sub
 
+    ' Checks whether the changed text is valid.
+    Private Sub maximumTextBox_TextChanged(sender As Object, e As EventArgs) Handles maximumTextBox.Leave
+        If Not (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text > minimumTextBox.Text) Then
+            MessageBox.Show("Invalid Maximum")
+            maximumTextBox.Text = My.Settings.BruteForceMax
+        End If
+    End Sub
+
+    ' Checks whether the changed text is valid.
+    Private Sub minimumTextBox_TextChanged(sender As Object, e As EventArgs) Handles minimumTextBox.Leave
+        If Not (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text < maximumTextBox.Text) Then
+            MessageBox.Show("Invalid Minimum")
+            minimumTextBox.Text = My.Settings.BruteForceMin
+        End If
+    End Sub
+
+    ' Saves all option settings to application settings.
     Private Sub saveButton_Click(sender As Object, e As EventArgs) Handles saveButton.Click
-        _savedChanges = True
+        My.Settings.TargetPath = targetLabel.Text
+        My.Settings.StoragePath = storageLabel.Text
+        My.Settings.Charset = charsetLabel.Text
+        My.Settings.PasswordPath = passwordListLabel.Text
+        My.Settings.BruteForceMin = minimumTextBox.Text
+        My.Settings.BruteForceMax = maximumTextBox.Text
+
         My.Settings.Save()
+        _savedChanges = True
         Close()
     End Sub
 
@@ -79,7 +106,6 @@ Public Class OptionsForm
         If File.Exists(openStorageFileDialog.FileName) Then
             storageLabel.Text = Compact.compactPath(openStorageFileDialog.FileName)
             toolTip.SetToolTip(storageLabel, openStorageFileDialog.FileName)
-            My.Settings.StoragePath = openStorageFileDialog.FileName
         Else
             storageLabel.Text = "No Deafult Storage Path Selected."
         End If
@@ -93,7 +119,6 @@ Public Class OptionsForm
         If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
             targetLabel.Text = Compact.compactPath(openTargetFileDialog.FileName)
             toolTip.SetToolTip(targetLabel, openTargetFileDialog.FileName)
-            My.Settings.TargetPath = openTargetFileDialog.FileName
         Else
             targetLabel.Text = "No Deafult Target Path Selected."
         End If
@@ -107,7 +132,6 @@ Public Class OptionsForm
         If File.Exists(openPasswordFileDialog.FileName) Then
             passwordListLabel.Text = Compact.compactPath(openPasswordFileDialog.FileName)
             toolTip.SetToolTip(passwordListLabel, openPasswordFileDialog.FileName)
-            My.Settings.PasswordPath = openPasswordFileDialog.FileName
         Else
             storageLabel.Text = "No Deafult Password List Path Selected."
         End If
