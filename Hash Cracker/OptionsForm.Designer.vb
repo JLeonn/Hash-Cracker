@@ -309,7 +309,6 @@ Partial Class OptionsForm
         Me.maximumTextBox.Size = New System.Drawing.Size(28, 22)
         Me.maximumTextBox.TabIndex = 45
         Me.maximumTextBox.Text = "8"
-        Me.maximumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'minimumTextBox
         '
@@ -319,7 +318,6 @@ Partial Class OptionsForm
         Me.minimumTextBox.Size = New System.Drawing.Size(28, 22)
         Me.minimumTextBox.TabIndex = 44
         Me.minimumTextBox.Text = "1"
-        Me.minimumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label7
         '

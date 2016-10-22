@@ -22,7 +22,6 @@ Public Class MainForm
     ' On Load
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         loadSettings()
-        displaySettings()
     End Sub
 
     Private Sub bruteforceRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles bruteforceRadioButton.CheckedChanged
@@ -33,12 +32,12 @@ Public Class MainForm
     ' Seperate from application settings
     Private Sub buildCharsetButton_Click(sender As Object, e As EventArgs) Handles buildCharsetButton.Click
         CustomCharsetForm.ShowDialog()
-        If CustomCharsetForm.Charset = String.Empty Then
-            charset = String.Empty
-            charsetLabel.Text = "No Built Charset."
-        Else
+        If CustomCharsetForm.Charset <> String.Empty Then
             charset = CustomCharsetForm.Charset
             charsetLabel.Text = CustomCharsetForm.Charset
+        Else
+            charset = String.Empty
+            charsetLabel.Text = "No Built Charset."
         End If
     End Sub
 
@@ -51,10 +50,11 @@ Public Class MainForm
     End Sub
 
     ' Displays the currently selected settings on the main form.
-    Private Sub displaySettings()
+    Private Sub loadSettings()
         If File.Exists(My.Settings.TargetPath) Then
             targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
             toolTip.SetToolTip(targetLabel, My.Settings.TargetPath)
+            targetPath = My.Settings.TargetPath
         Else
             targetLabel.Text = "No Target Path Selected."
         End If
@@ -62,39 +62,37 @@ Public Class MainForm
         If File.Exists(My.Settings.StoragePath) Then
             storageLabel.Text = Compact.compactPath(My.Settings.StoragePath)
             toolTip.SetToolTip(storageLabel, My.Settings.StoragePath)
+            storagePath = My.Settings.StoragePath
         Else
             storageLabel.Text = "No Storage Path Selected."
         End If
 
-        If My.Settings.Charset = String.Empty Then
-            charsetLabel.Text = "No Charset Built."
-        Else
+        If My.Settings.Charset <> String.Empty Then
             charsetLabel.Text = My.Settings.Charset
+            charset = My.Settings.Charset
+        Else
+            charset = String.Empty
+            charsetLabel.Text = "No Charset Built."
         End If
 
         If File.Exists(My.Settings.PasswordPath) Then
             passwordListLabel.Text = Compact.compactPath(My.Settings.PasswordPath)
             toolTip.SetToolTip(passwordListLabel, My.Settings.PasswordPath)
+            passwordListPath = My.Settings.PasswordPath
         Else
             passwordListLabel.Text = "No Password List Path Selected."
         End If
 
         maximumTextBox.Text = My.Settings.BruteForceMax
-        minimumTextBox.Text = My.Settings.BruteForceMin
-    End Sub
-
-    ' Loads all application settings into memory for application use.
-    Private Sub loadSettings()
-        targetPath = My.Settings.TargetPath
-        storagePath = My.Settings.StoragePath
-        charset = My.Settings.Charset
         maximum = My.Settings.BruteForceMax
+
+        minimumTextBox.Text = My.Settings.BruteForceMin
         minimum = My.Settings.BruteForceMin
     End Sub
 
     ' Checks whether the changed text is valid.
     Private Sub maximumTextBox_TextChanged(sender As Object, e As EventArgs) Handles maximumTextBox.Leave
-        If (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text > minimumTextBox.Text) Then
+        If (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text) Then
             My.Settings.BruteForceMax = maximumTextBox.Text
         Else
             MessageBox.Show("Invalid Maximum")
@@ -104,7 +102,7 @@ Public Class MainForm
 
     ' Checks whether the changed text is valid.
     Private Sub minimumTextBox_TextChanged(sender As Object, e As EventArgs) Handles minimumTextBox.Leave
-        If (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text < maximumTextBox.Text) Then
+        If (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text) Then
             My.Settings.BruteForceMin = minimumTextBox.Text
         Else
             MessageBox.Show("Invalid Minimum")
@@ -117,7 +115,6 @@ Public Class MainForm
         OptionsForm.ShowDialog()
         If OptionsForm.SavedChanges Then
             loadSettings()
-            displaySettings()
         End If
     End Sub
 
@@ -167,6 +164,8 @@ Public Class MainForm
             MessageBox.Show("No Target Path Selected.")
             Exit Sub
         End If
+
+        Console.WriteLine(charset)
 
         If storagePath = Nothing Then
             MessageBox.Show("No Storage Path Selected.")
