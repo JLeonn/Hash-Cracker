@@ -80,7 +80,7 @@
     <Compile Include="CustomCharsetForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HashCracking.vb" />
+    <Compile Include="HashAttacking.vb" />
     <Compile Include="Hashing.vb" />
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
@@ -109,7 +109,7 @@
     <Compile Include="OptionsForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PathCompactor.vb" />
+    <Compile Include="Compact.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CustomCharsetForm.resx">

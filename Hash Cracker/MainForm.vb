@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
+Imports Hash_Cracker.HashAttacking
 
 ' Contains all the handlers for the main form.
 Public Class MainForm

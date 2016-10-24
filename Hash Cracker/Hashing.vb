@@ -1,7 +1,7 @@
 ﻿Imports System.Security.Cryptography
 Imports System.Text
 
-Public Module Hashing
+Namespace Hashing
     ' Contains tools used to hash a string with a given Hashing Algorithm.
     Public Class Hasher
         Private _algorithm As HashAlgorithm
@@ -115,4 +115,4 @@ Public Module Hashing
             End Set
         End Property
     End Class
-End Module
+End Namespace

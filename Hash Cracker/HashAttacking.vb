@@ -1,10 +1,11 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
+Imports Hash_Cracker.Hashing
 
 ' Module dedicated to cracking hashes.
 ' Current attacks: Bruteforce, Dictionary
-Public Module HashCracking
+Namespace HashAttacking
     Public Interface Attacker
         Function attack(ByVal hash As Hash) As String
         Sub resetAttempts()
@@ -263,4 +264,4 @@ Public Module HashCracking
         End Property
     End Class
 
-End Module
+End Namespace
