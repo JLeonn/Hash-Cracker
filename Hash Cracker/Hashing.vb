@@ -5,8 +5,8 @@ Public Module Hashing
     ' Contains tools used to hash a string with a given Hashing Algorithm.
     Public Class Hasher
         Private _algorithm As HashAlgorithm
-        Private _useSalt As Boolean = True
         Private _salt As String = String.Empty
+        Private _useSalt As Boolean = True
 
         Public Sub New(ByVal algorithm As HashAlgorithm)
             Me.algorithm = algorithm
@@ -50,16 +50,6 @@ Public Module Hashing
             End Set
         End Property
 
-        ' Determines if a salt should be used or not.
-        Public Property UseSalt As Boolean
-            Get
-                Return _useSalt
-            End Get
-            Set(value As Boolean)
-                _useSalt = value
-            End Set
-        End Property
-
         ' The salt that will be applied along with the password to form the hash.
         Public Property Salt As String
             Get
@@ -67,6 +57,16 @@ Public Module Hashing
             End Get
             Set(value As String)
                 _salt = value
+            End Set
+        End Property
+
+        ' Determines if a salt should be used or not.
+        Public Property UseSalt As Boolean
+            Get
+                Return _useSalt
+            End Get
+            Set(value As Boolean)
+                _useSalt = value
             End Set
         End Property
     End Class

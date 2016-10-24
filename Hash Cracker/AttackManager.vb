@@ -3,15 +3,15 @@ Imports System.Threading
 
 
 Public Class AttackManager
-    Private _targetPath As String
-    Private _storagePath As String
-    Private _run As Boolean
     Private _attacker As Attacker
     Private _attackThread As Thread
     Private _parser As HashFileParser
+    Private _run As Boolean
+    Private _storagePath As String
+    Private _targetPath As String
     Private _writer As StreamWriter
 
-    ' Statistic
+    ' Thread Safe
     Private Shared _hashesCracked As Integer
 
     Public Sub New(ByVal targetPath As String, storagePath As String)
@@ -27,25 +27,27 @@ Public Class AttackManager
 
     ' Makaes use of and manages the attacker's attack method.
     Public Sub attack()
-        Dim result As String
-
         For Each hash In _parser.readHash()
             ' Checks if the thread should still be running
             If _run Then
                 Dim password = Attacker.attack(hash)
                 If password Is Nothing Then
-                    result = String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt)
+                    _writer.WriteLine(String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt))
                 Else
                     _hashesCracked += 1
-                    result = String.Format("Status: Cracked, Password: {0}", password)
+                    _writer.WriteLine(String.Format("Status: Cracked, Password: {0}", password))
                 End If
-                _writer.WriteLine(result)
             Else
-                result = String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt)
-                _writer.WriteLine(result)
+                _writer.WriteLine(String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt))
             End If
         Next
         _writer.Close()
+    End Sub
+
+    ' Stops the thread and its current cracking action.
+    Public Sub hault()
+        _attacker.Run = False
+        _run = False
     End Sub
 
     ' Starts the attack manager
@@ -63,33 +65,7 @@ Public Class AttackManager
         _attackThread.Start()
     End Sub
 
-    ' Stops the thread and its current cracking action.
-    Public Sub hault()
-        _attacker.Run = False
-        _run = False
-    End Sub
-
     ' Class properties
-    ' The targeted file that contains hashes.
-    Public Property TargetPath As String
-        Get
-            Return _targetPath
-        End Get
-        Set(value As String)
-            _targetPath = value
-        End Set
-    End Property
-
-    ' Storage path for output file.
-    Public Property StoragePath As String
-        Get
-            Return _storagePath
-        End Get
-        Set(value As String)
-            _storagePath = value
-        End Set
-    End Property
-
     ' The attacker used to commence the attack
     Public Property Attacker As Attacker
         Get
@@ -112,5 +88,25 @@ Public Class AttackManager
         Get
             Return _attackThread.IsAlive
         End Get
+    End Property
+
+    ' Storage path for output file.
+    Public Property StoragePath As String
+        Get
+            Return _storagePath
+        End Get
+        Set(value As String)
+            _storagePath = value
+        End Set
+    End Property
+
+    ' The targeted file that contains hashes.
+    Public Property TargetPath As String
+        Get
+            Return _targetPath
+        End Get
+        Set(value As String)
+            _targetPath = value
+        End Set
     End Property
 End Class

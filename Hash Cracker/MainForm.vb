@@ -3,18 +3,18 @@ Imports System.Threading
 
 ' Contains all the handlers for the main form.
 Public Class MainForm
-    Private parentDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
+    Private _parentDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
 
-    Private attackManager As AttackManager
-    Private attackMethod As String
-    Private charset As String
-    Private elapsedTime As Integer
-    Private maximum As Integer
-    Private minimum As Integer
-    Private passwordListPath As String
-    Private statThread As Thread
-    Private storagePath As String
-    Private targetPath As String
+    Private _attackManager As AttackManager
+    Private _attackMethod As String
+    Private _charset As String
+    Private _elapsedTime As Integer
+    Private _maximum As Integer
+    Private _minimum As Integer
+    Private _passwordListPath As String
+    Private _statThread As Thread
+    Private _storagePath As String
+    Private _targetPath As String
 
     'Thread safe delegate sub used to update label text properties on different threads.
     Private Delegate Sub SetTextCallBack([text] As String, label As Label)
@@ -33,10 +33,10 @@ Public Class MainForm
     Private Sub buildCharsetButton_Click(sender As Object, e As EventArgs) Handles buildCharsetButton.Click
         CustomCharsetForm.ShowDialog()
         If CustomCharsetForm.Charset <> String.Empty Then
-            charset = CustomCharsetForm.Charset
+            _charset = CustomCharsetForm.Charset
             charsetLabel.Text = CustomCharsetForm.Charset
         Else
-            charset = String.Empty
+            _charset = String.Empty
             charsetLabel.Text = "No Built Charset."
         End If
     End Sub
@@ -55,7 +55,7 @@ Public Class MainForm
         If File.Exists(My.Settings.TargetPath) Then
             targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
             toolTip.SetToolTip(targetLabel, My.Settings.TargetPath)
-            targetPath = My.Settings.TargetPath
+            _targetPath = My.Settings.TargetPath
         Else
             targetLabel.Text = "No Target Path Selected."
         End If
@@ -63,54 +63,52 @@ Public Class MainForm
         If File.Exists(My.Settings.StoragePath) Then
             storageLabel.Text = Compact.compactPath(My.Settings.StoragePath)
             toolTip.SetToolTip(storageLabel, My.Settings.StoragePath)
-            storagePath = My.Settings.StoragePath
+            _storagePath = My.Settings.StoragePath
         Else
             storageLabel.Text = "No Storage Path Selected."
-        End If
-
-        If My.Settings.Charset <> String.Empty Then
-            charsetLabel.Text = My.Settings.Charset
-            charset = My.Settings.Charset
-        Else
-            charset = String.Empty
-            charsetLabel.Text = "No Charset Built."
         End If
 
         If File.Exists(My.Settings.PasswordPath) Then
             passwordListLabel.Text = Compact.compactPath(My.Settings.PasswordPath)
             toolTip.SetToolTip(passwordListLabel, My.Settings.PasswordPath)
-            passwordListPath = My.Settings.PasswordPath
+            _passwordListPath = My.Settings.PasswordPath
         Else
             passwordListLabel.Text = "No Password List Path Selected."
         End If
 
+        If My.Settings.Charset <> String.Empty Then
+            charsetLabel.Text = My.Settings.Charset
+            _charset = My.Settings.Charset
+        Else
+            _charset = String.Empty
+            charsetLabel.Text = "No Charset Built."
+        End If
+
         maximumTextBox.Text = My.Settings.BruteForceMax
-        maximum = My.Settings.BruteForceMax
+        _maximum = My.Settings.BruteForceMax
 
         minimumTextBox.Text = My.Settings.BruteForceMin
-        minimum = My.Settings.BruteForceMin
+        _minimum = My.Settings.BruteForceMin
     End Sub
 
     ' Checks whether the changed text is valid.
     Private Sub maximumTextBox_TextChanged(sender As Object, e As EventArgs) Handles maximumTextBox.Leave
-        If Not (Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text) Then
+        If Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text Then
+            _maximum = maximumTextBox.Text
+        Else
             MessageBox.Show("Invalid Maximum")
             maximumTextBox.Text = My.Settings.BruteForceMax
-            Exit Sub
         End If
-
-        maximum = maximumTextBox.Text
     End Sub
 
     ' Checks whether the changed text is valid.
     Private Sub minimumTextBox_TextChanged(sender As Object, e As EventArgs) Handles minimumTextBox.Leave
-        If Not (Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text) Then
+        If Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text Then
+            _minimum = minimumTextBox.Text
+        Else
             MessageBox.Show("Invalid Minimum")
             minimumTextBox.Text = My.Settings.BruteForceMin
-            Exit Sub
         End If
-
-        minimum = minimumTextBox.Text
     End Sub
 
     ' Loads option form and updates any setting changes to main form.
@@ -124,14 +122,14 @@ Public Class MainForm
     ' Prompts use to select a password list.
     ' Seperate from application settings.
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
-        openPasswordFileDialog.InitialDirectory = parentDirectory
+        openPasswordFileDialog.InitialDirectory = _parentDirectory
         openPasswordFileDialog.Filter = "Text File (.txt)|*.txt"
         openPasswordFileDialog.ShowDialog()
 
         If File.Exists(openPasswordFileDialog.FileName) Then
             passwordListLabel.Text = Compact.compactPath(openPasswordFileDialog.FileName)
             toolTip.SetToolTip(passwordListLabel, openPasswordFileDialog.FileName)
-            passwordListPath = openPasswordFileDialog.FileName
+            _passwordListPath = openPasswordFileDialog.FileName
         Else
             storageLabel.Text = "No Password List Selected."
         End If
@@ -141,9 +139,9 @@ Public Class MainForm
     Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
         ' Sets the attak accordingly
         If dictionaryOption Then
-            attackMethod = "dictionary"
+            _attackMethod = "dictionary"
         Else
-            attackMethod = "bruteforce"
+            _attackMethod = "bruteforce"
         End If
 
         ' Dictionary options
@@ -163,39 +161,39 @@ Public Class MainForm
             Exit Sub
         End If
 
-        If targetPath = Nothing Then
+        If _targetPath = Nothing Then
             MessageBox.Show("No Target Path Selected.")
             Exit Sub
         End If
 
-        If storagePath = Nothing Then
+        If _storagePath = Nothing Then
             MessageBox.Show("No Storage Path Selected.")
             Exit Sub
         End If
 
-        attackManager = New AttackManager(targetPath, storagePath)
-        Select Case attackMethod
+        _attackManager = New AttackManager(_targetPath, _storagePath)
+        Select Case _attackMethod
             Case "bruteforce"
                 '  Checks information needed to commence a bruteforce attack.
-                If charset = String.Empty Then
+                If _charset = String.Empty Then
                     MessageBox.Show("No Charset Was Given.")
                     Exit Sub
                 End If
 
                 ' Attacks the given hash file while still giving the user usability of the interface.
-                Dim attacker As New BruteForce(charset, minimum, maximum)
-                attackManager.Attacker = attacker
+                Dim attacker As New BruteForce(_charset, _minimum, _maximum)
+                _attackManager.Attacker = attacker
                 totalPossibleLabel.Enabled = True
                 totalPossibleLabel.Text = attacker.TotalCombinations.ToString("N0")
             Case "dictionary"
                 ' Checks information need to commence a dictinary attack
-                If passwordListPath = Nothing Then
+                If _passwordListPath = Nothing Then
                     MessageBox.Show("No Password List Selected.")
                     Exit Sub
                 End If
 
-                Dim attacker As New Dictionary(passwordListPath)
-                attackManager.Attacker = attacker
+                Dim attacker As New Dictionary(_passwordListPath)
+                _attackManager.Attacker = attacker
                 totalPossibleLabel.Text = String.Empty
                 totalPossibleLabel.Enabled = False
             Case Else
@@ -206,26 +204,26 @@ Public Class MainForm
         timer.Enabled = True
         statusLabel.Text = "Running"
         elapsedTimeLabel.Text = "00:00:00"
-        elapsedTime = 0
+        _elapsedTime = 0
         attemptsPerSecondLabel.Text = 0
 
         ' Starts the attack manager, statistic manager and timer.
-        attackManager.start()
-        statThread = New Thread(New ThreadStart(AddressOf updateStats))
-        statThread.Start()
+        _attackManager.start()
+        _statThread = New Thread(New ThreadStart(AddressOf updateStats))
+        _statThread.Start()
         timer.Start()
     End Sub
 
     ' Seperate from application settings.
     Private Sub storageButton_Click(sender As Object, e As EventArgs) Handles storageButton.Click
-        openStorageFileDialog.InitialDirectory = parentDirectory
+        openStorageFileDialog.InitialDirectory = _parentDirectory
         openStorageFileDialog.Filter = "Text File (.txt)|*.txt"
         openStorageFileDialog.ShowDialog()
 
         If File.Exists(openStorageFileDialog.FileName) Then
             storageLabel.Text = Compact.compactPath(openStorageFileDialog.FileName)
             toolTip.SetToolTip(storageLabel, openStorageFileDialog.FileName)
-            storagePath = openStorageFileDialog.FileName
+            _storagePath = openStorageFileDialog.FileName
         Else
             storageLabel.Text = "No Storage Path Selected."
         End If
@@ -237,21 +235,21 @@ Public Class MainForm
     Private Sub stopButton_Click(sender As Object, e As EventArgs) Handles stopButton.Click
         If statusLabel.Text = "Running" Then
             statusLabel.Text = "Stopped"
-            attackManager.hault()
+            _attackManager.hault()
             timer.Enabled = False
         End If
     End Sub
 
     ' Seperate from application settings.
     Private Sub targetButton_Click(sender As Object, e As EventArgs) Handles targetButton.Click
-        openTargetFileDialog.InitialDirectory = parentDirectory
+        openTargetFileDialog.InitialDirectory = _parentDirectory
         openTargetFileDialog.Filter = "Hash File (.hash)|*.hash"
         openTargetFileDialog.ShowDialog()
 
         If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
             targetLabel.Text = Compact.compactPath(openTargetFileDialog.FileName)
             toolTip.SetToolTip(targetLabel, openTargetFileDialog.FileName)
-            targetPath = openTargetFileDialog.FileName
+            _targetPath = openTargetFileDialog.FileName
         Else
             targetLabel.Text = "No Target Selected."
         End If
@@ -259,10 +257,10 @@ Public Class MainForm
 
     ' Every tick updates the timer and 
     Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
-        elapsedTime += 1
-        Dim time = TimeSpan.FromSeconds(elapsedTime)
+        _elapsedTime += 1
+        Dim time = TimeSpan.FromSeconds(_elapsedTime)
         elapsedTimeLabel.Text = time.ToString("hh\:mm\:ss")
-        attemptsPerSecondLabel.Text = Math.Round(currentAttemptsLabel.Text / elapsedTime, 2).ToString("N2")
+        attemptsPerSecondLabel.Text = Math.Round(currentAttemptsLabel.Text / _elapsedTime, 2).ToString("N2")
     End Sub
 
     ' Thread safe function used to update Labels on a different thread.
@@ -278,9 +276,9 @@ Public Class MainForm
 
     ' The threaded action that maintains the statistal tab.
     Public Sub updateStats()
-        While attackManager.Running
-            updateLabel(attackManager.HashesCracked, hashesBrokeLabel)
-            updateLabel(attackManager.Attacker.Attempts.ToString("N0"), currentAttemptsLabel)
+        While _attackManager.Running
+            updateLabel(_attackManager.HashesCracked, hashesBrokeLabel)
+            updateLabel(_attackManager.Attacker.Attempts.ToString("N0"), currentAttemptsLabel)
         End While
         updateLabel("Stopped", statusLabel)
         timer.Enabled = False

@@ -6,10 +6,10 @@ Imports System.Text
 ' Current attacks: Bruteforce, Dictionary
 Public Module HashCracking
     Public Interface Attacker
-        ReadOnly Property Attempts As Long
-        WriteOnly Property Run As Boolean
         Function attack(ByVal hash As Hash) As String
         Sub resetAttempts()
+        ReadOnly Property Attempts As Long
+        WriteOnly Property Run As Boolean
     End Interface
 
 
@@ -40,7 +40,7 @@ Public Module HashCracking
         ' WARNING: May return null
         Public Function attack(ByVal hash As Hash) As String Implements Attacker.attack
             _run = True
-            Dim passwords As IEnumerable(Of String) = generatePasswords(_minimum, _maximum)
+            Dim passwords As IEnumerable(Of String) = generatePasswords()
             For Each password In passwords
                 _attempts += 1
                 Dim bytes As Byte() = Encoding.UTF8.GetBytes(password & hash.Salt)
@@ -54,18 +54,6 @@ Public Module HashCracking
             Return Nothing
         End Function
 
-        ' Calculates the number of possible combinations and starts generating all of them.
-        Public Iterator Function generatePasswords(ByVal min As Integer, max As Integer) As IEnumerable(Of String)
-            For mini As Integer = min To max
-                Dim total As Long = Math.Pow(Charset.Length, mini)
-                Dim counter As Long = 0
-                While counter < total
-                    Yield factoradic(counter, mini - 1)
-                    counter += 1
-                End While
-            Next
-        End Function
-
         ' Generates each possible combination with the given
         Private Function factoradic(ByVal l As Long, power As Double) As String
             Dim sb As New StringBuilder
@@ -75,6 +63,18 @@ Public Module HashCracking
                 power -= 1
             End While
             Return sb.ToString
+        End Function
+
+        ' Calculates the number of possible combinations and starts generating all of them.
+        Private Iterator Function generatePasswords() As IEnumerable(Of String)
+            For min As Integer = _minimum To _maximum
+                Dim total As Long = Math.Pow(Charset.Length, min)
+                Dim counter As Long = 0
+                While counter < total
+                    Yield factoradic(counter, min - 1)
+                    counter += 1
+                End While
+            Next
         End Function
 
         Public Sub resetAttempts() Implements Attacker.resetAttempts
@@ -99,16 +99,6 @@ Public Module HashCracking
             End Set
         End Property
 
-        ' Minimum Property
-        Public Property Minimum As Integer
-            Get
-                Return _minimum
-            End Get
-            Set(value As Integer)
-                _minimum = value
-            End Set
-        End Property
-
         ' Maximum Property
         Public Property Maximum As Integer
             Get
@@ -116,6 +106,16 @@ Public Module HashCracking
             End Get
             Set(value As Integer)
                 _maximum = value
+            End Set
+        End Property
+
+        ' Minimum Property
+        Public Property Minimum As Integer
+            Get
+                Return _minimum
+            End Get
+            Set(value As Integer)
+                _minimum = value
             End Set
         End Property
 
@@ -127,6 +127,7 @@ Public Module HashCracking
         End Property
 
         ' Total combinations due to current set brute force options.
+        ' TODO: 
         Public ReadOnly Property TotalCombinations As Long
             Get
                 Try
@@ -141,8 +142,8 @@ Public Module HashCracking
 
     ' Contains tools used for dictionary attacks on password hashes.
     Public Class Dictionary : Implements Attacker
-        Private _listPath As String
         Private _attempts As Integer
+        Private _listPath As String
         Private _run As Boolean
 
         Public Sub New(ByVal listPath As String)
@@ -177,6 +178,13 @@ Public Module HashCracking
         End Sub
 
         ' Class Properties
+        ' Total Attempts on current hash.
+        Public ReadOnly Property Attempts As Long Implements Attacker.Attempts
+            Get
+                Return _attempts
+            End Get
+        End Property
+
         ' Password List Path
         Public Property ListPath As String
             Get
@@ -185,13 +193,6 @@ Public Module HashCracking
             Set(value As String)
                 _listPath = value
             End Set
-        End Property
-
-        ' Total Attempts on current hash.
-        Public ReadOnly Property Attempts As Long Implements Attacker.Attempts
-            Get
-                Return _attempts
-            End Get
         End Property
 
         ' Determines whether the attacker should continue or not.
@@ -215,15 +216,6 @@ Public Module HashCracking
             End If
         End Sub
 
-        ' Generates a hash type that was read and parsed from the given file path.
-        Public Iterator Function readHash() As IEnumerable(Of Hash)
-            Do Until reader.Peek = -1
-                Dim properties = parseHash(reader.ReadLine())
-                Dim hashAlgorithm = determineAlgorithm(properties(2))
-                Yield New Hash(properties(0), properties(1), hashAlgorithm)
-            Loop
-        End Function
-
         ' Determines which hash class to return given a string.
         Private Function determineAlgorithm(ByVal algorithm As String) As HashAlgorithm
             Select Case algorithm
@@ -238,6 +230,15 @@ Public Module HashCracking
                 Case Else
                     Throw New ArgumentOutOfRangeException()
             End Select
+        End Function
+
+        ' Generates a hash type that was read and parsed from the given file path.
+        Public Iterator Function readHash() As IEnumerable(Of Hash)
+            Do Until reader.Peek = -1
+                Dim properties = parseHash(reader.ReadLine())
+                Dim hashAlgorithm = determineAlgorithm(properties(2))
+                Yield New Hash(properties(0), properties(1), hashAlgorithm)
+            Loop
         End Function
 
         ' Parses line from hash file into three properties of a hash.
@@ -261,4 +262,5 @@ Public Module HashCracking
             End Set
         End Property
     End Class
+
 End Module
