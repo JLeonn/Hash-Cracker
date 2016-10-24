@@ -25,7 +25,7 @@ Public Class OptionsForm
             charsetLabel.Text = CustomCharsetForm.Charset
         Else
             _charset = String.Empty
-            charsetLabel.Text = "No Built Charset."
+            charsetLabel.Text = "No Default Built Charset."
         End If
     End Sub
 
