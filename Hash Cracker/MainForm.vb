@@ -183,8 +183,6 @@ Public Class MainForm
                 End If
 
                 ' Attacks the given hash file while still giving the user usability of the interface.
-                Console.WriteLine(minimum)
-                Console.WriteLine(maximum)
                 Dim attacker As New BruteForce(charset, minimum, maximum)
                 attackManager.Attacker = attacker
                 totalPossibleLabel.Enabled = True

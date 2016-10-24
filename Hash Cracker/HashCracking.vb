@@ -9,6 +9,7 @@ Public Module HashCracking
         ReadOnly Property Attempts As Long
         WriteOnly Property Run As Boolean
         Function attack(ByVal hash As Hash) As String
+        Sub resetAttempts()
     End Interface
 
 
@@ -38,7 +39,6 @@ Public Module HashCracking
         ' Starts the bruteforce cracking process.
         ' WARNING: May return null
         Public Function attack(ByVal hash As Hash) As String Implements Attacker.attack
-            _attempts = 0
             _run = True
             Dim passwords As IEnumerable(Of String) = generatePasswords(_minimum, _maximum)
             For Each password In passwords
@@ -76,6 +76,10 @@ Public Module HashCracking
             End While
             Return sb.ToString
         End Function
+
+        Public Sub resetAttempts() Implements Attacker.resetAttempts
+            _attempts = 0
+        End Sub
 
         ' Class Properties
         ' Total Attempts on current hash.
@@ -150,7 +154,6 @@ Public Module HashCracking
         Public Function attack(ByVal hash As Hash) As String Implements Attacker.attack
             Dim sr As New StreamReader(_listPath)
             Dim password As String
-            _attempts = 0
             _run = True
 
             Do
@@ -161,13 +164,17 @@ Public Module HashCracking
                 If Convert.ToBase64String(hashBytes) = hash.Hash Then
                     Return password
                 ElseIf Not _run Then
-                    Exit Do
+                    Return Nothing
                 End If
             Loop Until password Is Nothing
             sr.Close()
 
             Return Nothing
         End Function
+
+        Public Sub resetAttempts() Implements Attacker.resetAttempts
+            _attempts = 0
+        End Sub
 
         ' Class Properties
         ' Password List Path
