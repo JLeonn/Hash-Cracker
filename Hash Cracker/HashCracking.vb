@@ -56,11 +56,11 @@ Public Module HashCracking
 
         ' Calculates the number of possible combinations and starts generating all of them.
         Public Iterator Function generatePasswords(ByVal min As Integer, max As Integer) As IEnumerable(Of String)
-            For _minimum = min To max
-                Dim total As Long = Math.Pow(Charset.Length, _minimum)
+            For mini As Integer = min To max
+                Dim total As Long = Math.Pow(Charset.Length, mini)
                 Dim counter As Long = 0
                 While counter < total
-                    Yield factoradic(counter, _minimum - 1)
+                    Yield factoradic(counter, mini - 1)
                     counter += 1
                 End While
             Next
