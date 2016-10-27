@@ -7,18 +7,6 @@ Imports Hash_Cracker.Hashing
 ' Current attacks: Bruteforce, Dictionary
 Namespace HashAttacking
 
-    ' Contains multiple prebuilt charactersets that can be used for building salts, and specfic bruteforce attacks.
-#Region "CharacterSets Module"
-    Public Module CharacterSets
-        Public Const ALL_CHARACTERS As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy0123456789!@#$%^&*()_+=-[]{};':,.<>/?`~|\ "
-        Public Const UPPER_CASES As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        Public Const LOWER_CASES As String = "abcdefghijklmnopqrstuvwxyz"
-        Public Const NUMBERS As String = "0123456789"
-        Public Const SYMBOLS As String = "!@#$%^&*()_+=-[]{};':,.<>/?`~|\"
-        Public Const SPACES As String = " "
-    End Module
-#End Region
-
     ' Allows multiple different hash attack methods to be represented as a single entity.
 #Region "Attacker Interface"
     Public Interface Attacker

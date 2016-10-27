@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttackManager.vb" />
+    <Compile Include="CharacterSets.vb" />
     <Compile Include="CustomCharsetForm.Designer.vb">
       <DependentUpon>CustomCharsetForm.vb</DependentUpon>
     </Compile>

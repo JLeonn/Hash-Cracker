@@ -1,6 +1,6 @@
 ﻿Imports System.Text
 
-' Contains tools for compacting strings down.
+' Contains tools for compacting strings down to smaller yet still readable strings.
 Public Class Compact
     ' Compresses a paths directories down to 4 directories by default or a chosen ammount.
     ' Length is the number of directories shown before the compression and current directory.
