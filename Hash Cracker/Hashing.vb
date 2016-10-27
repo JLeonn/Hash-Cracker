@@ -1,15 +1,18 @@
 ﻿Imports System.Security.Cryptography
+Imports Hash_Cracker.HashAttacking
 Imports System.Text
 
 Namespace Hashing
-    ' Contains tools used to hash a string with a given Hashing Algorithm.
+
+    ' Contains tools used to hash a string.
+#Region "Hasher Class"
     Public Class Hasher
         Private _algorithm As HashAlgorithm
         Private _salt As String = String.Empty
         Private _useSalt As Boolean = True
 
         Public Sub New(ByVal algorithm As HashAlgorithm)
-            Me.algorithm = algorithm
+            Me.Algorithm = algorithm
         End Sub
 
         ' Hashes given password with wanted algorithm and salt if wanted.
@@ -70,9 +73,10 @@ Namespace Hashing
             End Set
         End Property
     End Class
+#End Region
 
-
-    ' Holds information regarding a hash.
+    ' Holds information regarding a hash. The result of a string being hashed.
+#Region "Hash Class"
     Public Class Hash
         Private _hash As String
         Private _salt As String
@@ -80,7 +84,7 @@ Namespace Hashing
 
         Public Sub New(ByVal hash As String, salt As String, type As HashAlgorithm)
             Me.Hash = hash
-            Me.salt = salt
+            Me.Salt = salt
             Me.Type = type
         End Sub
 
@@ -115,4 +119,5 @@ Namespace Hashing
             End Set
         End Property
     End Class
+#End Region
 End Namespace

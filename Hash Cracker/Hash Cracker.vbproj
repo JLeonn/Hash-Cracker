@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttackManager.vb" />
-    <Compile Include="CharacterSets.vb" />
     <Compile Include="CustomCharsetForm.Designer.vb">
       <DependentUpon>CustomCharsetForm.vb</DependentUpon>
     </Compile>
@@ -103,12 +102,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="OptionsForm.Designer.vb">
-      <DependentUpon>OptionsForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="OptionsForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Compact.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -123,9 +116,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OptionsForm.resx">
-      <DependentUpon>OptionsForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,12 @@
-﻿Public Class CustomCharsetForm
-    Private _charset As String
+﻿Imports Hash_Cracker.HashAttacking
 
+Public Class CustomCharsetForm
+
+#Region "Vairables"
+    Private _charset As String
+#End Region
+
+#Region "Handlers"
     Private Sub setCharsetButton_Click(sender As Object, e As EventArgs) Handles setCharsetButton.Click
         If findDuplicate(textBox.Text) Then
             Dim result = MsgBox("Duplicates In Charset. Continue?", MsgBoxStyle.YesNo, "Duplicates Detected")
@@ -32,7 +38,9 @@
     Private Sub spacesCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles spacesCheckBox.CheckedChanged
         updateCharset(spacesCheckBox, SPACES)
     End Sub
+#End Region
 
+#Region "Methods"
     ' Updates text box's charset deppending on which check boxes are checked.
     Private Sub updateCharset(ByVal checkBox As CheckBox, subCharset As String)
         If checkBox.Checked Then
@@ -56,8 +64,9 @@
         Next
         Return False
     End Function
+#End Region
 
-    ' Class Properties
+#Region "Properties"
     Public Property Charset As String
         Get
             Return _charset
@@ -66,4 +75,5 @@
             _charset = value
         End Set
     End Property
+#End Region
 End Class

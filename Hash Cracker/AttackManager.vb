@@ -4,17 +4,19 @@ Imports Hash_Cracker.HashAttacking
 
 
 Public Class AttackManager
+
+#Region "Variables"
     Private _attacker As Attacker
     Private _attackThread As Thread
+    Private Shared _hashesCracked As Integer
     Private _parser As HashFileParser
     Private _run As Boolean
     Private _storagePath As String
     Private _targetPath As String
     Private _writer As StreamWriter
+#End Region
 
-    ' Thread Safe
-    Private Shared _hashesCracked As Integer
-
+#Region "Constructors"
     Public Sub New(ByVal targetPath As String, storagePath As String)
         Me.TargetPath = targetPath
         Me.StoragePath = storagePath
@@ -25,7 +27,9 @@ Public Class AttackManager
         Me.StoragePath = storagePath
         Me.Attacker = attacker
     End Sub
+#End Region
 
+#Region "Methods"
     ' Makaes use of and manages the attacker's attack method.
     Public Sub attack()
         For Each hash In _parser.readHash()
@@ -65,8 +69,9 @@ Public Class AttackManager
         _attackThread = New Thread(New ThreadStart(AddressOf attack))
         _attackThread.Start()
     End Sub
+#End Region
 
-    ' Class properties
+#Region "Properties"
     ' The attacker used to commence the attack
     Public Property Attacker As Attacker
         Get
@@ -110,4 +115,6 @@ Public Class AttackManager
             _targetPath = value
         End Set
     End Property
+#End Region
+
 End Class

@@ -4,21 +4,17 @@ Imports Hash_Cracker.HashAttacking
 
 ' Contains all the handlers for the main form.
 Public Class MainForm
-    Private _parentDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
-
     Private _attackManager As AttackManager
     Private _attackMethod As String
     Private _charset As String
     Private _elapsedTime As Integer
     Private _maximum As Integer
     Private _minimum As Integer
+    Private _parentDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).ToString()
     Private _passwordListPath As String
     Private _statThread As Thread
     Private _storagePath As String
     Private _targetPath As String
-
-    'Thread safe delegate sub used to update label text properties on different threads.
-    Private Delegate Sub SetTextCallBack([text] As String, label As Label)
 
     ' On Load
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
@@ -35,9 +31,11 @@ Public Class MainForm
         CustomCharsetForm.ShowDialog()
         If CustomCharsetForm.Charset <> String.Empty Then
             _charset = CustomCharsetForm.Charset
+            My.Settings.Charset = CustomCharsetForm.Charset
             charsetLabel.Text = CustomCharsetForm.Charset
         Else
             _charset = String.Empty
+            My.Settings.Charset = String.Empty
             charsetLabel.Text = "No Built Charset."
         End If
     End Sub
@@ -96,6 +94,7 @@ Public Class MainForm
     Private Sub maximumTextBox_TextChanged(sender As Object, e As EventArgs) Handles maximumTextBox.Leave
         If Integer.TryParse(maximumTextBox.Text, Nothing) And maximumTextBox.Text >= minimumTextBox.Text Then
             _maximum = maximumTextBox.Text
+            My.Settings.BruteForceMax = maximumTextBox.Text
         Else
             MessageBox.Show("Invalid Maximum")
             maximumTextBox.Text = My.Settings.BruteForceMax
@@ -106,17 +105,10 @@ Public Class MainForm
     Private Sub minimumTextBox_TextChanged(sender As Object, e As EventArgs) Handles minimumTextBox.Leave
         If Integer.TryParse(minimumTextBox.Text, Nothing) And minimumTextBox.Text <= maximumTextBox.Text Then
             _minimum = minimumTextBox.Text
+            My.Settings.BruteForceMin = minimumTextBox.Text
         Else
             MessageBox.Show("Invalid Minimum")
             minimumTextBox.Text = My.Settings.BruteForceMin
-        End If
-    End Sub
-
-    ' Loads option form and updates any setting changes to main form.
-    Private Sub optionsMenuItem_Click(sender As Object, e As EventArgs) Handles optionsMenuItem.Click
-        OptionsForm.ShowDialog()
-        If OptionsForm.SavedChanges Then
-            loadSettings()
         End If
     End Sub
 
@@ -124,6 +116,7 @@ Public Class MainForm
     ' Seperate from application settings.
     Private Sub passwordListButton_Click(sender As Object, e As EventArgs) Handles passwordListButton.Click
         openPasswordFileDialog.InitialDirectory = _parentDirectory
+        openPasswordFileDialog.Multiselect = False
         openPasswordFileDialog.Filter = "Text File (.txt)|*.txt"
         openPasswordFileDialog.ShowDialog()
 
@@ -131,10 +124,12 @@ Public Class MainForm
             passwordListLabel.Text = Compact.compactPath(openPasswordFileDialog.FileName)
             toolTip.SetToolTip(passwordListLabel, openPasswordFileDialog.FileName)
             _passwordListPath = openPasswordFileDialog.FileName
-        Else
-            storageLabel.Text = "No Password List Selected."
+            My.Settings.PasswordPath = openPasswordFileDialog.FileName
         End If
     End Sub
+
+    'Thread safe delegate sub used to update label text properties on different threads.
+    Private Delegate Sub SetTextCallBack([text] As String, label As Label)
 
     ' Flips the attack option between the bruteforce and dictionary attack.
     Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
@@ -225,8 +220,7 @@ Public Class MainForm
             storageLabel.Text = Compact.compactPath(openStorageFileDialog.FileName)
             toolTip.SetToolTip(storageLabel, openStorageFileDialog.FileName)
             _storagePath = openStorageFileDialog.FileName
-        Else
-            storageLabel.Text = "No Storage Path Selected."
+            My.Settings.StoragePath = openStorageFileDialog.FileName
         End If
     End Sub
 
@@ -247,12 +241,11 @@ Public Class MainForm
         openTargetFileDialog.Filter = "Hash File (.hash)|*.hash"
         openTargetFileDialog.ShowDialog()
 
-        If File.Exists(openTargetFileDialog.FileName) And Path.GetExtension(openTargetFileDialog.FileName) = ".hash" Then
+        If File.Exists(openTargetFileDialog.FileName) Then
             targetLabel.Text = Compact.compactPath(openTargetFileDialog.FileName)
             toolTip.SetToolTip(targetLabel, openTargetFileDialog.FileName)
             _targetPath = openTargetFileDialog.FileName
-        Else
-            targetLabel.Text = "No Target Selected."
+            My.Settings.TargetPath = openTargetFileDialog.FileName
         End If
     End Sub
 

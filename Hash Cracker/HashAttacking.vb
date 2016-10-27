@@ -6,15 +6,31 @@ Imports Hash_Cracker.Hashing
 ' Module dedicated to cracking hashes.
 ' Current attacks: Bruteforce, Dictionary
 Namespace HashAttacking
+
+    ' Contains multiple prebuilt charactersets that can be used for building salts, and specfic bruteforce attacks.
+#Region "CharacterSets Module"
+    Public Module CharacterSets
+        Public Const ALL_CHARACTERS As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy0123456789!@#$%^&*()_+=-[]{};':,.<>/?`~|\ "
+        Public Const UPPER_CASES As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        Public Const LOWER_CASES As String = "abcdefghijklmnopqrstuvwxyz"
+        Public Const NUMBERS As String = "0123456789"
+        Public Const SYMBOLS As String = "!@#$%^&*()_+=-[]{};':,.<>/?`~|\"
+        Public Const SPACES As String = " "
+    End Module
+#End Region
+
+    ' Allows multiple different hash attack methods to be represented as a single entity.
+#Region "Attacker Interface"
     Public Interface Attacker
         Function attack(ByVal hash As Hash) As String
         Sub resetAttempts()
         ReadOnly Property Attempts As Long
         WriteOnly Property Run As Boolean
     End Interface
-
+#End Region
 
     ' Contains tools used to perform brute force attacks on password hashes.
+#Region "BruteForce Class"
     Public Class BruteForce : Implements Attacker
         Private _attempts As Integer
         Private _charset As String
@@ -139,9 +155,10 @@ Namespace HashAttacking
             End Get
         End Property
     End Class
-
+#End Region
 
     ' Contains tools used for dictionary attacks on password hashes.
+#Region "Dictionary Class"
     Public Class Dictionary : Implements Attacker
         Private _attempts As Integer
         Private _listPath As String
@@ -203,7 +220,10 @@ Namespace HashAttacking
             End Set
         End Property
     End Class
+#End Region
 
+    ' Contains tools used for parsing .hash files.
+#Region "HashFileParser Class"
     Public Class HashFileParser
         Private _filePath As String
         Private reader As StreamReader
@@ -263,5 +283,6 @@ Namespace HashAttacking
             End Set
         End Property
     End Class
+#End Region
 
 End Namespace
