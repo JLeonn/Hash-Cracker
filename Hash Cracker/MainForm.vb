@@ -2,8 +2,9 @@
 Imports System.Threading
 Imports Hash_Cracker.HashAttacking
 
-' Contains all the handlers for the main form.
+' Backend for the mainform
 Public Class MainForm
+#Region "Variables"
     Private _attackManager As AttackManager
     Private _attackMethod As String
     Private _charset As String
@@ -15,7 +16,9 @@ Public Class MainForm
     Private _statThread As Thread
     Private _storagePath As String
     Private _targetPath As String
+#End Region
 
+#Region "Handlers"
     ' On Load
     Private Sub MainForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         loadSettings()
@@ -46,48 +49,6 @@ Public Class MainForm
 
     Private Sub dictionaryRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles dictionaryRadioButton.CheckedChanged
         setOptions(True, False)
-    End Sub
-
-    ' Displays the currently selected settings on the main form.
-    ' Loads settings into memory.
-    Private Sub loadSettings()
-        If File.Exists(My.Settings.TargetPath) Then
-            targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
-            toolTip.SetToolTip(targetLabel, My.Settings.TargetPath)
-            _targetPath = My.Settings.TargetPath
-        Else
-            targetLabel.Text = "No Target Path Selected."
-        End If
-
-        If File.Exists(My.Settings.StoragePath) Then
-            storageLabel.Text = Compact.compactPath(My.Settings.StoragePath)
-            toolTip.SetToolTip(storageLabel, My.Settings.StoragePath)
-            _storagePath = My.Settings.StoragePath
-        Else
-            storageLabel.Text = "No Storage Path Selected."
-        End If
-
-        If File.Exists(My.Settings.PasswordPath) Then
-            passwordListLabel.Text = Compact.compactPath(My.Settings.PasswordPath)
-            toolTip.SetToolTip(passwordListLabel, My.Settings.PasswordPath)
-            _passwordListPath = My.Settings.PasswordPath
-        Else
-            passwordListLabel.Text = "No Password List Path Selected."
-        End If
-
-        If My.Settings.Charset <> String.Empty Then
-            charsetLabel.Text = My.Settings.Charset
-            _charset = My.Settings.Charset
-        Else
-            _charset = String.Empty
-            charsetLabel.Text = "No Charset Built."
-        End If
-
-        maximumTextBox.Text = My.Settings.BruteForceMax
-        _maximum = My.Settings.BruteForceMax
-
-        minimumTextBox.Text = My.Settings.BruteForceMin
-        _minimum = My.Settings.BruteForceMin
     End Sub
 
     ' Checks whether the changed text is valid.
@@ -126,29 +87,6 @@ Public Class MainForm
             _passwordListPath = openPasswordFileDialog.FileName
             My.Settings.PasswordPath = openPasswordFileDialog.FileName
         End If
-    End Sub
-
-    'Thread safe delegate sub used to update label text properties on different threads.
-    Private Delegate Sub SetTextCallBack([text] As String, label As Label)
-
-    ' Flips the attack option between the bruteforce and dictionary attack.
-    Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
-        ' Sets the attak accordingly
-        If dictionaryOption Then
-            _attackMethod = "dictionary"
-        Else
-            _attackMethod = "bruteforce"
-        End If
-
-        ' Dictionary options
-        passwordListButton.Enabled = dictionaryOption
-        passwordListLabel.Enabled = dictionaryOption
-
-        ' Bruteforce options
-        buildCharsetButton.Enabled = bruteForceOption
-        charsetLabel.Enabled = bruteForceOption
-        minimumTextBox.Enabled = bruteForceOption
-        maximumTextBox.Enabled = bruteForceOption
     End Sub
 
     ' Initiates the cracking process.
@@ -256,6 +194,73 @@ Public Class MainForm
         elapsedTimeLabel.Text = time.ToString("hh\:mm\:ss")
         attemptsPerSecondLabel.Text = Math.Round(currentAttemptsLabel.Text / _elapsedTime, 2).ToString("N2")
     End Sub
+#End Region
+
+#Region "Methods"
+    ' Displays the currently selected settings on the main form.
+    ' Loads settings into memory.
+    Private Sub loadSettings()
+        If File.Exists(My.Settings.TargetPath) Then
+            targetLabel.Text = Compact.compactPath(My.Settings.TargetPath)
+            toolTip.SetToolTip(targetLabel, My.Settings.TargetPath)
+            _targetPath = My.Settings.TargetPath
+        Else
+            targetLabel.Text = "No Target Path Selected."
+        End If
+
+        If File.Exists(My.Settings.StoragePath) Then
+            storageLabel.Text = Compact.compactPath(My.Settings.StoragePath)
+            toolTip.SetToolTip(storageLabel, My.Settings.StoragePath)
+            _storagePath = My.Settings.StoragePath
+        Else
+            storageLabel.Text = "No Storage Path Selected."
+        End If
+
+        If File.Exists(My.Settings.PasswordPath) Then
+            passwordListLabel.Text = Compact.compactPath(My.Settings.PasswordPath)
+            toolTip.SetToolTip(passwordListLabel, My.Settings.PasswordPath)
+            _passwordListPath = My.Settings.PasswordPath
+        Else
+            passwordListLabel.Text = "No Password List Path Selected."
+        End If
+
+        If My.Settings.Charset <> String.Empty Then
+            charsetLabel.Text = My.Settings.Charset
+            _charset = My.Settings.Charset
+        Else
+            _charset = String.Empty
+            charsetLabel.Text = "No Charset Built."
+        End If
+
+        maximumTextBox.Text = My.Settings.BruteForceMax
+        _maximum = My.Settings.BruteForceMax
+
+        minimumTextBox.Text = My.Settings.BruteForceMin
+        _minimum = My.Settings.BruteForceMin
+    End Sub
+
+    'Thread safe delegate sub used to update label text properties on different threads.
+    Private Delegate Sub SetTextCallBack([text] As String, label As Label)
+
+    ' Flips the attack option between the bruteforce and dictionary attack.
+    Private Sub setOptions(ByVal dictionaryOption As Boolean, bruteForceOption As Boolean)
+        ' Sets the attak accordingly
+        If dictionaryOption Then
+            _attackMethod = "dictionary"
+        Else
+            _attackMethod = "bruteforce"
+        End If
+
+        ' Dictionary options
+        passwordListButton.Enabled = dictionaryOption
+        passwordListLabel.Enabled = dictionaryOption
+
+        ' Bruteforce options
+        buildCharsetButton.Enabled = bruteForceOption
+        charsetLabel.Enabled = bruteForceOption
+        minimumTextBox.Enabled = bruteForceOption
+        maximumTextBox.Enabled = bruteForceOption
+    End Sub
 
     ' Thread safe function used to update Labels on a different thread.
     ' Used in conjunction with 'updateStats'
@@ -277,4 +282,5 @@ Public Class MainForm
         updateLabel("Stopped", statusLabel)
         timer.Enabled = False
     End Sub
+#End Region
 End Class
