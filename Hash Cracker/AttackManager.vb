@@ -46,6 +46,7 @@ Public Class AttackManager
                 _writer.WriteLine(String.Format("Status: Uncracked, Hash: {0}, Salt: {1}", hash.Hash, hash.Salt))
             End If
         Next
+
         _writer.Close()
     End Sub
 

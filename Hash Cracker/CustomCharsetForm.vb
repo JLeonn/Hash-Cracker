@@ -53,6 +53,7 @@ Public Class CustomCharsetForm
     ' Determines if there are duplicate characters in a given string
     Private Function findDuplicate(ByVal charset As String) As Boolean
         Dim characters = charset.ToCharArray
+
         For i As Integer = 0 To characters.Count - 1
             For j As Integer = 0 To characters.Count - 1
                 If i = j Then

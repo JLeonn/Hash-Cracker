@@ -43,10 +43,6 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub closeFormMenuItem_Click(sender As Object, e As EventArgs) Handles closeFormMenuItem.Click
-        Close()
-    End Sub
-
     Private Sub dictionaryRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles dictionaryRadioButton.CheckedChanged
         setOptions(True, False)
     End Sub
@@ -279,6 +275,7 @@ Public Class MainForm
             updateLabel(_attackManager.HashesCracked, hashesBrokeLabel)
             updateLabel(_attackManager.Attacker.Attempts.ToString("N0"), currentAttemptsLabel)
         End While
+
         updateLabel("Stopped", statusLabel)
         timer.Enabled = False
     End Sub

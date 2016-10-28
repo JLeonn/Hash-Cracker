@@ -46,6 +46,7 @@ Namespace HashAttacking
         Public Function attack(ByVal hash As Hash) As String Implements Attacker.attack
             _run = True
             Dim passwords As IEnumerable(Of String) = generatePasswords()
+
             For Each password In passwords
                 _attempts += 1
                 Dim bytes As Byte() = Encoding.UTF8.GetBytes(password & hash.Salt)
@@ -56,12 +57,14 @@ Namespace HashAttacking
                     Return Nothing
                 End If
             Next
+
             Return Nothing
         End Function
 
         ' Generates each possible combination with the given
         Private Function factoradic(ByVal l As Long, power As Double) As String
             Dim sb As New StringBuilder
+
             While power >= 0
                 sb = sb.Append(Charset((l Mod _charset.Length)))
                 l /= _charset.Length

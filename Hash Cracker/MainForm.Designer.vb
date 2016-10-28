@@ -70,21 +70,9 @@ Partial Class MainForm
         Me.openPasswordFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.toolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.menuStrip = New System.Windows.Forms.MenuStrip()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.closeFormMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.optionsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileSelectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AttackMethodsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatisticsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.menuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -127,7 +115,7 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.bruteforceRadioButton)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 143)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 128)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0, 15, 17, 15)
         Me.GroupBox1.Size = New System.Drawing.Size(920, 300)
@@ -350,7 +338,7 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.statusLabel)
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(13, 449)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 434)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(920, 197)
         Me.GroupBox2.TabIndex = 23
@@ -492,7 +480,7 @@ Partial Class MainForm
         'startButton
         '
         Me.startButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.Location = New System.Drawing.Point(13, 652)
+        Me.startButton.Location = New System.Drawing.Point(13, 637)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 24
@@ -550,7 +538,7 @@ Partial Class MainForm
         'stopButton
         '
         Me.stopButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.stopButton.Location = New System.Drawing.Point(94, 652)
+        Me.stopButton.Location = New System.Drawing.Point(94, 637)
         Me.stopButton.Name = "stopButton"
         Me.stopButton.Size = New System.Drawing.Size(75, 23)
         Me.stopButton.TabIndex = 30
@@ -576,85 +564,12 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.storageButton)
         Me.GroupBox3.Controls.Add(Me.Label13)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(13, 27)
+        Me.GroupBox3.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(920, 110)
         Me.GroupBox3.TabIndex = 31
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "File Selection"
-        '
-        'menuStrip
-        '
-        Me.menuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
-        Me.menuStrip.Location = New System.Drawing.Point(0, 0)
-        Me.menuStrip.Name = "menuStrip"
-        Me.menuStrip.Size = New System.Drawing.Size(947, 24)
-        Me.menuStrip.TabIndex = 32
-        Me.menuStrip.Text = "MenuStrip1"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.closeFormMenuItem})
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
-        Me.ToolStripMenuItem1.Text = "File"
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(141, 22)
-        Me.ToolStripMenuItem3.Text = "Create .Hash"
-        '
-        'closeFormMenuItem
-        '
-        Me.closeFormMenuItem.Name = "closeFormMenuItem"
-        Me.closeFormMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.closeFormMenuItem.Text = "Exit"
-        '
-        'SettingsToolStripMenuItem
-        '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.optionsMenuItem})
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
-        '
-        'optionsMenuItem
-        '
-        Me.optionsMenuItem.Name = "optionsMenuItem"
-        Me.optionsMenuItem.Size = New System.Drawing.Size(116, 22)
-        Me.optionsMenuItem.Text = "Options"
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2})
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileSelectionToolStripMenuItem, Me.AttackMethodsToolStripMenuItem, Me.StatisticsToolStripMenuItem})
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(123, 22)
-        Me.ToolStripMenuItem2.Text = "Manual..."
-        '
-        'FileSelectionToolStripMenuItem
-        '
-        Me.FileSelectionToolStripMenuItem.Name = "FileSelectionToolStripMenuItem"
-        Me.FileSelectionToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.FileSelectionToolStripMenuItem.Text = "File Selection"
-        '
-        'AttackMethodsToolStripMenuItem
-        '
-        Me.AttackMethodsToolStripMenuItem.Name = "AttackMethodsToolStripMenuItem"
-        Me.AttackMethodsToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.AttackMethodsToolStripMenuItem.Text = "Attack Methods"
-        '
-        'StatisticsToolStripMenuItem
-        '
-        Me.StatisticsToolStripMenuItem.Name = "StatisticsToolStripMenuItem"
-        Me.StatisticsToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.StatisticsToolStripMenuItem.Text = "Statistics"
         '
         'MainForm
         '
@@ -667,9 +582,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.startButton)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.menuStrip)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MainMenuStrip = Me.menuStrip
         Me.Name = "MainForm"
         Me.Text = "Hash Cracker"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -679,10 +592,7 @@ Partial Class MainForm
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.menuStrip.ResumeLayout(False)
-        Me.menuStrip.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label2 As Label
@@ -728,18 +638,7 @@ Partial Class MainForm
     Friend WithEvents openPasswordFileDialog As OpenFileDialog
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents toolTip As ToolTip
-    Friend WithEvents menuStrip As MenuStrip
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents closeFormMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents FileSelectionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AttackMethodsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents StatisticsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents optionsMenuItem As ToolStripMenuItem
     Friend WithEvents charsetLabel As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents buildCharsetButton As Button
-    Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
 End Class

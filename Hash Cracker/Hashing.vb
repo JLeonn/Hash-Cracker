@@ -19,6 +19,7 @@ Namespace Hashing
         ' Default salt size is 20 characters.
         Public Function hash(ByVal password As String, Optional saltSize As Integer = 19) As Hash
             Dim salt As String
+
             If Not _useSalt Then
                 salt = String.Empty
             Else
