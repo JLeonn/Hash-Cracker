@@ -68,6 +68,7 @@ Public Class CustomCharsetForm
 #End Region
 
 #Region "Properties"
+    ' The charset built using the form tools.
     Public Property Charset As String
         Get
             Return _charset
