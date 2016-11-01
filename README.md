@@ -1,4 +1,4 @@
-# Hash-Cracker
+# HashCracker
 
 Hash Cracker is a GUI application used to Crack .HASH files.
 
