@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Hash_Cracker.MainForm
+            Me.MainForm = Global.HashCracker.MainForm
         End Sub
     End Class
 End Namespace

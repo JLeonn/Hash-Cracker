@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
-Imports Hash_Cracker.HashAttacking
+Imports HashCracker.HashAttacking
 
 
 Public Class AttackManager

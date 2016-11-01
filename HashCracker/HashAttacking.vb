@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
-Imports Hash_Cracker.Hashing
+Imports HashCracker.Hashing
 
 ' Module dedicated to cracking hashes.
 ' Current attacks: Bruteforce, Dictionary

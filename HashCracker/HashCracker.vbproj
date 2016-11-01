@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{45AC1A05-7252-410E-A640-3A5950C54FF7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Hash_Cracker.My.MyApplication</StartupObject>
-    <RootNamespace>Hash_Cracker</RootNamespace>
-    <AssemblyName>Hash Cracker</AssemblyName>
+    <StartupObject>HashCracker.My.MyApplication</StartupObject>
+    <RootNamespace>HashCracker</RootNamespace>
+    <AssemblyName>HashCracker</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Hash Cracker.xml</DocumentationFile>
+    <DocumentationFile>HashCracker.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Hash Cracker.xml</DocumentationFile>
+    <DocumentationFile>HashCracker.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>

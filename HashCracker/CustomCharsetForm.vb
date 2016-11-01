@@ -1,4 +1,4 @@
-﻿Imports Hash_Cracker.HashAttacking
+﻿Imports HashCracker.HashAttacking
 
 Public Class CustomCharsetForm
 

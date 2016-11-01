@@ -1,5 +1,5 @@
 ﻿Imports System.Security.Cryptography
-Imports Hash_Cracker.HashAttacking
+Imports HashCracker.HashAttacking
 Imports System.Text
 
 Namespace Hashing
