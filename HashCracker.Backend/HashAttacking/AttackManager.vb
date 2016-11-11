@@ -33,7 +33,7 @@ Namespace HashAttacking
 #Region "Methods"
         ' Makaes use of and manages the attacker's attack method.
         Public Sub attack()
-            For Each hash In _parser.readHash()
+            For Each hash In _parser.readHashFile()
                 ' Checks if the thread should still be running
                 If _run Then
                     Dim password = Attacker.attack(hash)
