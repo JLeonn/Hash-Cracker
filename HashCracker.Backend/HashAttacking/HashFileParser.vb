@@ -43,6 +43,10 @@ Namespace HashAttacking
         Public Iterator Function readHashFile() As IEnumerable(Of Hash)
             Do Until _reader.Peek = -1
                 Dim properties As Match = parse(_reader.ReadLine())
+                If IsNothing(properties) Then
+                    Continue Do
+                End If
+
                 Dim hashAlgorithm = determineAlgorithm(properties.Groups("type").Value)
                 Yield New Hash(properties.Groups("hash").Value,
                                properties.Groups("salt").Value,
@@ -51,15 +55,12 @@ Namespace HashAttacking
         End Function
 
         ' Parses line from hash file into three properties of a hash.
-        ' TODO: Update this to use regular expressions. BUG, doesnt only remove the first occurances.
+        ' WARNING: Returns null if no match is made.
         Public Function parse(ByVal line As String) As Match
             Dim pattern As New Regex("^Hash: (?<hash>.*), Salt: (?<salt>.*), HashType: (?<type>.*)")
             Dim match As Match = pattern.Match(line)
 
             If match.Success Then
-                Console.WriteLine(match.Groups("hash").Value)
-                Console.WriteLine(match.Groups("salt").Value)
-                Console.WriteLine(match.Groups("type").Value)
                 Return match
             Else
                 Return Nothing
