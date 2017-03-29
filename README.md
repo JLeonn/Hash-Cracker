@@ -9,6 +9,10 @@ This interface also allows you to view minimalistic stats while waiting for the 
 
 ![alt tag](examples/before-cracking.png)
 
+Hash Cracker also comes with a charset builder for those who enjoy bruteforce. Simply select the charatercs you want used or manually type them in.
+
+![alt tag](examples/charset-builder.png)
+
 Steps:
 1. Select target .hash file and session storage location.
 2. Select attack method along with that method's distinct options.
