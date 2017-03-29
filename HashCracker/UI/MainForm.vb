@@ -184,7 +184,7 @@ Public Class MainForm
         End If
     End Sub
 
-    ' Every tick updates the timer and 
+    ' Every tick updates the timer and
     Private Sub timer_Tick(sender As Object, e As EventArgs) Handles timer.Tick
         _elapsedTime += 1
         Dim time = TimeSpan.FromSeconds(_elapsedTime)

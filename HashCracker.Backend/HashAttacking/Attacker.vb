@@ -9,4 +9,3 @@ Namespace HashAttacking
         WriteOnly Property Run As Boolean
     End Interface
 End Namespace
-

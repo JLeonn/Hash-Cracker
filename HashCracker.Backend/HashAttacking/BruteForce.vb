@@ -125,7 +125,7 @@ Namespace HashAttacking
         End Property
 
         ' Total combinations due to current set brute force options.
-        ' TODO: 
+        ' TODO:
         Public ReadOnly Property TotalCombinations As Long
             Get
                 Try
